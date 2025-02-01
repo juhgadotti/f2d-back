@@ -13,15 +13,17 @@ namespace Food2Desk.Controllers
         {
             _configuration = configuration;
         }
+
         private static readonly string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
-        [HttpGet("gets")]
-        public JsonResult Gets()
+        [HttpGet("")]
+        public string[] Gets()
         {
-            return new JsonResult(Summaries);
+            var a = Summaries;
+            return a;
         }
     }
 }

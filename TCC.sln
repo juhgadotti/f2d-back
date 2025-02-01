@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35303.130
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Food2Desk", "Food2Desk\Food2Desk.csproj", "{C180ED6E-F491-4943-A1A9-52E1DE21252F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Food2Desk", "Food2Desk\Food2Desk.csproj", "{C180ED6E-F491-4943-A1A9-52E1DE21252F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Food2Desk.Core", "Food2Desk.Core\Food2Desk.Core.csproj", "{38CC797E-03CF-4E49-904A-4C992845CC52}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Food2Desk.DataAccess", "Food2Desk.DataAccess\Food2Desk.DataAccess.csproj", "{4350D630-2174-4660-838E-72D0DC2CF1D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Food2Desk.Shared", "Food2Desk.Shared\Food2Desk.Shared.csproj", "{5E731650-0B9A-476C-BA19-DCD59FCDBDE9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{C180ED6E-F491-4943-A1A9-52E1DE21252F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C180ED6E-F491-4943-A1A9-52E1DE21252F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C180ED6E-F491-4943-A1A9-52E1DE21252F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38CC797E-03CF-4E49-904A-4C992845CC52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38CC797E-03CF-4E49-904A-4C992845CC52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38CC797E-03CF-4E49-904A-4C992845CC52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38CC797E-03CF-4E49-904A-4C992845CC52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4350D630-2174-4660-838E-72D0DC2CF1D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4350D630-2174-4660-838E-72D0DC2CF1D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4350D630-2174-4660-838E-72D0DC2CF1D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4350D630-2174-4660-838E-72D0DC2CF1D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E731650-0B9A-476C-BA19-DCD59FCDBDE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E731650-0B9A-476C-BA19-DCD59FCDBDE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E731650-0B9A-476C-BA19-DCD59FCDBDE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E731650-0B9A-476C-BA19-DCD59FCDBDE9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -19,4 +19,9 @@
     <Folder Include="CoreInterface\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Food2Desk.Core\Food2Desk.Core.csproj" />
+    <ProjectReference Include="..\Food2Desk.Shared\Food2Desk.Shared.csproj" />
+  </ItemGroup>
+
 </Project>
