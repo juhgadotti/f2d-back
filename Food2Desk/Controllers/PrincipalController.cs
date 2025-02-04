@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Data.SqlClient;
+using Food2Desk.Core.CoreInterfaces;
 
 namespace Food2Desk.Controllers
 {
@@ -8,10 +9,12 @@ namespace Food2Desk.Controllers
     public class PrincipalController : ControllerBase
     {
         public readonly IConfiguration _configuration;
+        private readonly IProductCore ProductCore;
 
-        public PrincipalController(IConfiguration configuration)
+        public PrincipalController(IConfiguration configuration, IProductCore product)
         {
             _configuration = configuration;
+            ProductCore = product;
         }
 
         private static readonly string[] Summaries = new[]

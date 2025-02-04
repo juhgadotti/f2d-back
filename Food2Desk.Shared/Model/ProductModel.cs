@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace Food2Desk.Shared.Model
 {
-    internal class ProductModel
+    public class ProductModel
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string? Description { get; set; }
-        public float Price { get; set; }
-        public string Category { get; set; }
+        public double Price { get; set; }
+        public int Category { get; set; }
         public string? ImageUrl { get; set; }
 
         public ProductModel BuildModel(ProductDTO dto)
@@ -27,6 +27,22 @@ namespace Food2Desk.Shared.Model
                 Category = dto.Category,
                 ImageUrl = dto.ImageUrl
             };
+        }
+
+        public List<ProductModel> BuildModelList(List<ProductDTO> dto)
+        {
+            for (int i = 0; i <= dto.Count(); i++)
+            {
+                new ProductModel()
+                {
+                    Id = dto[i].Id,
+                    Name = dto[i].Name,
+                    Description = dto[i].Description,
+                    Price = dto[i].Price,
+                    Category = dto[i].Category,
+                    ImageUrl = dto[i].ImageUrl
+                };
+            }
         }
 
         public ProductDTO BuildDTO(ProductModel model)
