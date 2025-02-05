@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Food2Desk.Shared.Model
 {
-    public class ProductsModel
+    public class ProductModel
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
@@ -16,9 +16,9 @@ namespace Food2Desk.Shared.Model
         public int Category { get; set; }
         public string? ImageUrl { get; set; }
 
-        public ProductsModel BuildModel(ProductsDTO dto)
+        public ProductModel BuildModel(ProductDTO dto)
         {
-            return new ProductsModel()
+            return new ProductModel()
             {
                 Id = dto.Id,
                 Name = dto.Name,
@@ -29,11 +29,11 @@ namespace Food2Desk.Shared.Model
             };
         }
 
-        public List<ProductsModel> BuildModelList(List<ProductsDTO> dto)
+        public List<ProductModel> BuildModelList(List<ProductDTO> dto)
         {
             for (int i = 0; i <= dto.Count(); i++)
             {
-                new ProductsModel()
+                new ProductModel()
                 {
                     Id = dto[i].Id,
                     Name = dto[i].Name,
@@ -45,9 +45,9 @@ namespace Food2Desk.Shared.Model
             }
         }
 
-        public ProductsDTO BuildDTO(ProductsModel model)
+        public ProductDTO BuildDTO(ProductModel model)
         {
-            return new ProductsDTO()
+            return new ProductDTO()
             {
                 Id = model.Id,
                 Name = model.Name,

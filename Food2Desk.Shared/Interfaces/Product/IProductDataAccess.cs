@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Food2Desk.Shared.DTOs;
 
-namespace Food2Desk.Shared.Interfaces.Products
+namespace Food2Desk.Shared.Interfaces.Product
 {
-    public interface IProductsDataAccess
+    public interface IProductDataAccess
     {
-        public List<ProductsDTO> List();
+        public List<ProductDTO> List();
     }
 }

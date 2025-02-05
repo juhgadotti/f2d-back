@@ -9,12 +9,12 @@ namespace Food2Desk.Controllers
     public class PrincipalController : ControllerBase
     {
         public readonly IConfiguration _configuration;
-        private readonly IProductsCore ProductsCore;
+        private readonly IProductCore ProductCore;
 
-        public PrincipalController(IConfiguration configuration, IProductsCore products)
+        public PrincipalController(IConfiguration configuration, IProductCore Product)
         {
             _configuration = configuration;
-            ProductsCore = products;
+            ProductCore = Product;
         }
 
         private static readonly string[] Summaries = new[]
@@ -28,5 +28,8 @@ namespace Food2Desk.Controllers
             var a = Summaries;
             return a;
         }
+
+        [HttpGet("/Product-list")]
+                
     }
 }

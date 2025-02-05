@@ -7,8 +7,8 @@ using Food2Desk.Shared.Model;
 
 namespace Food2Desk.Core.CoreInterfaces
 {
-    public interface IProductsCore
+    public interface IProductCore
     {
-        public List<ProductsModel> List();
+        public List<ProductModel> List();
     }
 }
