@@ -9,12 +9,12 @@ namespace Food2Desk.Controllers
     public class PrincipalController : ControllerBase
     {
         public readonly IConfiguration _configuration;
-        private readonly IProductCore ProductCore;
+        private readonly IProductsCore ProductsCore;
 
-        public PrincipalController(IConfiguration configuration, IProductCore product)
+        public PrincipalController(IConfiguration configuration, IProductsCore products)
         {
             _configuration = configuration;
-            ProductCore = product;
+            ProductsCore = products;
         }
 
         private static readonly string[] Summaries = new[]
