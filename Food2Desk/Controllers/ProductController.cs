@@ -21,7 +21,7 @@ namespace Food2Desk.Controllers
         {
             List<ProductDTO> listDTO = ProductCore.List();
 
-            return new JsonResult(listDTO.Select(ProductBuilds.BuildModel));
+            return new JsonResult(listDTO.Select(ProductModel.BuildModel));
         }
     }
 }
