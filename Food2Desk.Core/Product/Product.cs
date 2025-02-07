@@ -1,12 +1,13 @@
 ﻿using Food2Desk.Shared.Model;
 using Food2Desk.Shared.DTOs;
 using Food2Desk.Shared.Interfaces.Product;
+using Food2Desk.Shared.Interfaces;
 
 
-namespace Food2Desk.Core.Core
+namespace Food2Desk.Core
 {
 
-    public class Product
+    public class Product : IProductCore
     {
         private readonly IProductDataAccess ProductDA;
 
@@ -15,10 +16,9 @@ namespace Food2Desk.Core.Core
             ProductDA = productDA;
         }
 
-        public List<ProductModel> List()
+        public List<ProductDTO> List()
         {
-            List<ProductDTO> dtoList = ProductDA.List();
-            return 
+            return ProductDA.List();            
         }
 
     }

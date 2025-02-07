@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Data.SqlClient;
-using Food2Desk.Core.CoreInterfaces;
+using Food2Desk.Shared.Interfaces;
 
 namespace Food2Desk.Controllers
 {
@@ -28,8 +28,7 @@ namespace Food2Desk.Controllers
             var a = Summaries;
             return a;
         }
-
-        [HttpGet("/Product-list")]
+        
                 
     }
 }

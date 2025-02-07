@@ -1,8 +1,9 @@
 ﻿using Food2Desk.Shared.DTOs;
+using Food2Desk.Shared.Interfaces.Product;
 
 namespace Food2Desk.DataAccess.DataAccess
 {
-    public class ProductDataAccess
+    public class ProductDataAccess : IProductDataAccess
     {
         public List<ProductDTO> List()
         {
