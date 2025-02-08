@@ -11,5 +11,6 @@ namespace Food2Desk.Shared.Interfaces
     public interface IProductCore
     {
         public List<ProductDTO> List();
+        public ProductDTO Get(Guid id);
     }
 }

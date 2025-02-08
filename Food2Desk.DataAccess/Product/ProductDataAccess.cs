@@ -16,5 +16,10 @@ namespace Food2Desk.DataAccess.DataAccess
 
             return list;
         }
+
+        public ProductDTO Get(Guid id)
+        {
+            return new ProductDTO { Id = Guid.Parse("64794FA6-31A2-4E33-8E3C-3D8FE8A57827"), Name = "Agua", Description = "Com/Sem gas", Category = 1, Price = 2.99, ImageUrl = "h2o" };
+        }
     }
 }

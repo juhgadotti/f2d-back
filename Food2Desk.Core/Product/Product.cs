@@ -18,7 +18,12 @@ namespace Food2Desk.Core
 
         public List<ProductDTO> List()
         {
-            return ProductDA.List();            
+            return ProductDA.List();
+        }
+
+        public ProductDTO Get(Guid id)
+        {
+            return ProductDA.Get(id);
         }
 
     }

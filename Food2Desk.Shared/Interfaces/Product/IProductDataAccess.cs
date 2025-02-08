@@ -10,5 +10,6 @@ namespace Food2Desk.Shared.Interfaces.Product
     public interface IProductDataAccess
     {
         public List<ProductDTO> List();
+        public ProductDTO Get(Guid id);
     }
 }
