@@ -7,7 +7,7 @@ using Food2Desk.Shared.Interfaces;
 namespace Food2Desk.Core
 {
 
-    public class Product : IProductCore
+    public class Product : IProductCore //TESTE
     {
         private readonly IProductDataAccess ProductDA;
 
