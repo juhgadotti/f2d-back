@@ -15,5 +15,6 @@ namespace Food2Desk.Shared.Interfaces
 
         public ProductDTO Insert(ProductDTO dto);
         public ProductDTO Update(ProductDTO dto);
+        public void Delete(ProductModel model);
     }
 }

@@ -22,5 +22,15 @@ namespace Food2Desk.DataAccess.DataAccess
             List<ProductDTO> list = List();
             return list.FirstOrDefault(i => i?.Id == id);
         }
+
+        public ProductDTO Insert(ProductDTO dto)
+        {
+            return dto;
+        }
+
+        public ProductDTO Update(ProductDTO dto)
+        {
+            return dto;
+        }
     }
 }

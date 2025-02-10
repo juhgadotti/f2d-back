@@ -27,12 +27,18 @@ namespace Food2Desk.Core
         }
 
         public ProductDTO Insert(ProductDTO dto)
-        {
-            return dto;
+        {            
+            return ProductDA.Insert(dto);
         }
+
         public ProductDTO Update(ProductDTO dto)
         {
-            return dto;
+            return ProductDA.Update(dto);
+        }
+
+        public void Delete(ProductModel model)
+        {
+            // :)
         }
 
     }
