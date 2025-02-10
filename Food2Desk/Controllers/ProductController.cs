@@ -37,7 +37,7 @@ namespace Food2Desk.Controllers
             return new JsonResult(ProductModel.BuildModel(newDTO));
         }
 
-        [HttpPut("")]
+        [HttpPut("{id:Guid}")]
         public JsonResult Update(ProductModel model)
         {
             ProductDTO dto = ProductModel.BuildDTO(model);
@@ -47,6 +47,14 @@ namespace Food2Desk.Controllers
         [HttpDelete("")]
         public JsonResult Delete(ProductModel model)
         {
+            return new JsonResult(model);
+        }
+
+        [HttpPut("")]
+        public JsonResult UpdateThenList(ProductModel model)
+        {
+            ProductDTO dto = ProductModel.BuildDTO(model);
+            List<ProductDTO> newListDTO = ProductCore.UpdateThenList(dto);
             return new JsonResult(model);
         }
 

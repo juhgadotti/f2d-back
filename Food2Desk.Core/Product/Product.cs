@@ -2,6 +2,7 @@
 using Food2Desk.Shared.DTOs;
 using Food2Desk.Shared.Interfaces.Product;
 using Food2Desk.Shared.Interfaces;
+using System.Collections.Generic;
 
 
 namespace Food2Desk.Core
@@ -41,5 +42,9 @@ namespace Food2Desk.Core
             // :)
         }
 
+        public List<ProductDTO> UpdateThenList(ProductDTO dto)
+        {
+            return ProductDA.UpdateThenList(dto);
+        }
     }
 }

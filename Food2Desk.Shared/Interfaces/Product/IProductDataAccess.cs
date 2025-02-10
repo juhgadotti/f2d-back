@@ -13,5 +13,6 @@ namespace Food2Desk.Shared.Interfaces.Product
         public ProductDTO Get(Guid id);
         public ProductDTO Insert(ProductDTO dto);
         public ProductDTO Update(ProductDTO dto);
+        public List<ProductDTO> UpdateThenList(ProductDTO dto);
     }
 }

@@ -1,5 +1,7 @@
 ﻿using Food2Desk.Shared.DTOs;
 using Food2Desk.Shared.Interfaces.Product;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Food2Desk.DataAccess.DataAccess
 {
@@ -31,6 +33,13 @@ namespace Food2Desk.DataAccess.DataAccess
         public ProductDTO Update(ProductDTO dto)
         {
             return dto;
+        }
+
+        public List<ProductDTO> UpdateThenList(ProductDTO dto)
+        {
+            List<ProductDTO> list = List();
+            var toUpdate = list.FirstOrDefault(dto.Id);
+            return list;
         }
     }
 }
