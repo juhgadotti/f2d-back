@@ -31,18 +31,20 @@ namespace Food2Desk.Controllers
         }
 
         [HttpPost("")]
-        public JsonResult Post(ProductDTO model) {
+        public JsonResult Insert(ProductModel model) {
+            ProductDTO dto = ProductModel.BuildDTO(model);
             return new JsonResult(model);
         }
 
         [HttpPut("")]
-        public JsonResult Put(ProductDTO model)
+        public JsonResult Update(ProductModel model)
         {
+            ProductDTO dto = ProductModel.BuildDTO(model);
             return new JsonResult(model);
         }
 
         [HttpDelete("")]
-        public JsonResult Delete(ProductDTO model)
+        public JsonResult Delete(ProductModel model)
         {
             return new JsonResult(model);
         }

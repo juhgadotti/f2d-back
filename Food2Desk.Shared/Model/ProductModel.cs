@@ -29,7 +29,7 @@ namespace Food2Desk.Shared.Model
             };
         }
 
-        public ProductDTO BuildDTO(ProductModel model)
+        public static ProductDTO BuildDTO(ProductModel model)
         {
             return new ProductDTO()
             {

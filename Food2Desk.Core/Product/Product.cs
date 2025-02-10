@@ -26,5 +26,14 @@ namespace Food2Desk.Core
             return ProductDA.Get(id);
         }
 
+        public ProductDTO Insert(ProductDTO dto)
+        {
+            return dto;
+        }
+        public ProductDTO Update(ProductDTO dto)
+        {
+            return dto;
+        }
+
     }
 }
