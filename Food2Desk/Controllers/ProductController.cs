@@ -29,5 +29,23 @@ namespace Food2Desk.Controllers
             ProductDTO dto = ProductCore.Get(id);
             return new JsonResult(ProductModel.BuildModel(dto));
         }
+
+        [HttpPost("")]
+        public JsonResult Post(ProductDTO model) {
+            return new JsonResult(model);
+        }
+
+        [HttpPut("")]
+        public JsonResult Put(ProductDTO model)
+        {
+            return new JsonResult(model);
+        }
+
+        [HttpDelete("")]
+        public JsonResult Delete(ProductDTO model)
+        {
+            return new JsonResult(model);
+        }
+
     }
 }
