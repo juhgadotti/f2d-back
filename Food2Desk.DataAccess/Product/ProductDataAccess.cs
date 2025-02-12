@@ -38,7 +38,10 @@ namespace Food2Desk.DataAccess.DataAccess
         public List<ProductDTO> UpdateThenList(ProductDTO dto)
         {
             List<ProductDTO> list = List();
-            var toUpdate = list.FirstOrDefault(dto.Id);
+            foreach (var a in list.Where(d => d.Id == dto.Id))
+            {
+                a = dto;
+            }
             return list;
         }
     }
