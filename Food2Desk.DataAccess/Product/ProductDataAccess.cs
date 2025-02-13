@@ -11,9 +11,9 @@ namespace Food2Desk.DataAccess.DataAccess
         {
             List<ProductDTO> list = new List<ProductDTO>()
             {
-                new ProductDTO {Id = Guid.Parse("76B62969-25CE-4FBC-BE96-19B2447C69E7"), Name = "Coca", Description = "350ml", Category = 1, Price = 5.99, ImageUrl = "cu"},
-                new ProductDTO {Id = Guid.Parse("8CFB6326-8E5E-4BFE-B51E-95F5E2E79A6E"), Name = "Coxinha", Description = "Frango e catupiry", Category = 2, Price = 7.99, ImageUrl = "cuxinha"},
-                new ProductDTO {Id = Guid.Parse("64794FA6-31A2-4E33-8E3C-3D8FE8A57827"), Name = "Agua", Description = "Com/Sem gas", Category = 1, Price = 2.99, ImageUrl = "h2o"}
+                new ProductDTO {Id = Guid.Parse("8CFB6326-8E5E-4BFE-B51E-95F5E2E79A6E"), Name = "Coxinha", Description = "Coxinha de frango com ou sem catupiry", Category = 2, Price = 7.99, ImageUrl = "images/coxinha.jpg"},
+                new ProductDTO {Id = Guid.Parse("76B62969-25CE-4FBC-BE96-19B2447C69E7"), Name = "Coca cola", Description = "350ml", Category = 1, Price = 5.99, ImageUrl = "images/coca.png"},
+                new ProductDTO {Id = Guid.Parse("64794FA6-31A2-4E33-8E3C-3D8FE8A57827"), Name = "Agua", Description = "Com/Sem gas - 500ml", Category = 1, Price = 2.99, ImageUrl = "images/agua.jp"}
             };
 
             return list;
@@ -38,7 +38,7 @@ namespace Food2Desk.DataAccess.DataAccess
         public List<ProductDTO> UpdateThenList(ProductDTO dto)
         {
             List<ProductDTO> list = List();
-            var toUpdate = list.FirstOrDefault(dto.Id);
+            var toUpdate = list.FirstOrDefault(a => a.Id == dto.Id);
             return list;
         }
     }
