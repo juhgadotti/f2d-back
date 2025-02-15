@@ -17,7 +17,7 @@ namespace Food2Desk.Core.User
                 Floor = "11",
                 Number = "102",
                 Enterprise = "Numax",
-                EnterpriseId = 3
+                EnterpriseId = Guid.NewGuid() //"A24C13F0-E264-4396-BCEF-69AA8BD76465"
             };
             UserModel user = new UserModel()
             {
