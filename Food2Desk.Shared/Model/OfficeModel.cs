@@ -8,7 +8,11 @@ namespace Food2Desk.Shared.Model
 {
     public class OfficeModel
     {
-        public int Floor { get; set; }
-        public int Number { get; set; }
+        public String? Block { get; set; }
+        public String Floor { get; set; }
+        public String Number { get; set; }
+        public String Enterprise { get; set; }
+        public int EnterpriseId { get; set; }
+        public String? Obs { get; set; }
     }
 }

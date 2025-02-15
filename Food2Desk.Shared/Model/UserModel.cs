@@ -9,7 +9,7 @@ namespace Food2Desk.Shared.Model
     public class UserModel
     {
         public Guid Id { get; set; }
-        public string Name { get; set; }        
-        public List<OfficeModel> Offices {get; set;}
+        public string Name { get; set; }
+        public List<OfficeModel>? Offices {get; set;}
     }
 }

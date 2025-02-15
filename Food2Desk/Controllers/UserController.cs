@@ -1,4 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Food2Desk.Shared.Model;
+using Food2Desk.Shared.Interfaces;
+using Food2Desk.Shared.DTOs;
+using Food2Desk.Shared.Interfaces.User;
 
 namespace Food2Desk.Controllers
 {
@@ -6,11 +10,18 @@ namespace Food2Desk.Controllers
     [Route("api/[controller]")]
     public class UserController : ControllerBase
     {
-        //public readonly IUserCore UserCore;
+        public readonly IUserCore UserCore;
 
         public UserController()
         {
+        }
 
+        [HttpGet("")]
+        public JsonResult Get()
+        {
+            UserModel user = UserCore.Get();
+
+            return new JsonResult(user);
         }
     }
 }
