@@ -12,7 +12,21 @@ namespace Food2Desk.DataAccess
     {
         public UserModel Get()
         {
+            OfficeModel office = new OfficeModel()
+            {
+                Floor = "11",
+                Number = "102",
+                Enterprise = "Numax",
+                EnterpriseId = Guid.NewGuid() //"A24C13F0-E264-4396-BCEF-69AA8BD76465"
+            };
+            UserModel user = new UserModel()
+            {
+                Name = "Joao",
+                Id = Guid.NewGuid(),
+                Offices = new List<OfficeModel>() { office }
+            };
 
+            return user;
         }
     }
 }
