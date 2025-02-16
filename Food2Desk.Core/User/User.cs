@@ -6,13 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Food2Desk.Core.User
+namespace Food2Desk.Core
 {
     public class User : IUserCore
     {
         private readonly IUserDataAccess UserDA;
 
-        public User(IUserDataAccess userDA) {
+        public User(IUserDataAccess userDA)
+        {
             UserDA = userDA;
         }
         public UserModel Get()

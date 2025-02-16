@@ -3,7 +3,7 @@ using Food2Desk.Shared.Interfaces.Product;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Food2Desk.DataAccess.DataAccess
+namespace Food2Desk.DataAccess.Product
 {
     public class ProductDataAccess : IProductDataAccess
     {

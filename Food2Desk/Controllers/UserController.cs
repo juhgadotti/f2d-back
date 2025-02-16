@@ -12,8 +12,9 @@ namespace Food2Desk.Controllers
     {
         public readonly IUserCore UserCore;
 
-        public UserController()
+        public UserController(IUserCore userCore)
         {
+            UserCore = userCore;
         }
 
         [HttpGet("")]

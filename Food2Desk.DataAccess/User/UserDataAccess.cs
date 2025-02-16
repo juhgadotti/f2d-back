@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Food2Desk.DataAccess
+namespace Food2Desk.DataAccess.User
 {
-    class UserDataAccess : IUserDataAccess
+    public class UserDataAccess : IUserDataAccess
     {
         public UserModel Get()
         {
