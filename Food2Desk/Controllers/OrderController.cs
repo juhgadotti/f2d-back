@@ -16,6 +16,11 @@ namespace Food2Desk.Controllers
         {
             return Ok(model);
         }
-        
+
+        [HttpGet("")]
+        public IActionResult Get()
+        {
+            return Ok();
+        }
     }
 }
