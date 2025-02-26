@@ -15,7 +15,8 @@ namespace Food2Desk.Shared.Model
         public decimal totalCharge { get; set; }
         public bool DeliveryNow { get; set; }
         public string? DeliveryTime { get; set; }
+        public DateTime? DateMade { get; set; }
         public OfficeModel Office { get; set; }
-        public List<Items> Items { get; set; }
+        public List<ProductModel> Products { get; set; }
     }
 }
