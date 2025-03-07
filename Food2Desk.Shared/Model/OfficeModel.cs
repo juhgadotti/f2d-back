@@ -14,7 +14,7 @@ namespace Food2Desk.Shared.Model
         public String Number { get; set; }
         public String? Block { get; set; }
         public String? Enterprise { get; set; }
-        public Guid EnterpriseId { get; set; }
+        public Guid? EnterpriseId { get; set; }
         public String? Obs { get; set; }
 
         public static OfficeModel BuildModel(OfficeDTO dto)
