@@ -1,4 +1,5 @@
-﻿using Food2Desk.Shared.Model;
+﻿using Food2Desk.Shared.Interfaces.Order;
+using Food2Desk.Shared.Model;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Food2Desk.Controllers
@@ -7,14 +8,16 @@ namespace Food2Desk.Controllers
     [Route("api/[controller]")]
     public class OrderController : ControllerBase
     {
-        public OrderController()
+        public readonly IOrderCore OrderCore;
+        public OrderController(IOrderCore order)
         {
+            OrderCore = order;
         }
 
         [HttpPost("")]
-        public IActionResult Insert(OrderModel model)
+        public OrderModel Insert(OrderModel model)
         {
-            return Ok(model);
+            return OrderCore.Insert(model);
         }
 
         [HttpGet("")]
