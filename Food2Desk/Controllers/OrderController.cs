@@ -14,14 +14,26 @@ namespace Food2Desk.Controllers
             OrderCore = order;
         }
 
+        [HttpGet("")]
+        public IActionResult Get()
+        {
+            return Ok();
+        }
+
         [HttpPost("")]
         public OrderModel Insert(OrderModel model)
         {
             return OrderCore.Insert(model);
         }
 
-        [HttpGet("")]
-        public IActionResult Get()
+        [HttpPut("")]
+        public IActionResult Update()
+        {
+            return Ok();
+        }
+
+        [HttpDelete("")]
+        public IActionResult Delete()
         {
             return Ok();
         }
