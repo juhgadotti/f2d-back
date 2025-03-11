@@ -1,4 +1,5 @@
 using Food2Desk.Core;
+using Food2Desk.Core.Order;
 using Food2Desk.Shared.Interfaces;
 using Food2Desk.DataAccess.User;
 using Food2Desk.DataAccess.Product;
@@ -24,6 +25,7 @@ builder.Services.AddCors(options =>
 builder.Services.AddScoped<IProductCore, Product>();
 builder.Services.AddScoped<IProductDataAccess, ProductDataAccess>();
 builder.Services.AddScoped<IOrderDataAccess, OrderDataAccess>();
+builder.Services.AddScoped<IOrderCore, Order>();
 builder.Services.AddScoped<IUserCore, User>();
 builder.Services.AddScoped<IUserDataAccess, UserDataAccess>();
 
