@@ -21,9 +21,9 @@ namespace Food2Desk.Controllers
         }
 
         [HttpPost("")]
-        public OrderModel Insert(OrderModel model)
+        public IActionResult Insert(OrderModel model)
         {
-            return OrderCore.Insert(model);
+            return Ok();
         }
 
         [HttpPut("")]

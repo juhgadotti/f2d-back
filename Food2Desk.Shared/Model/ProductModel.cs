@@ -9,11 +9,12 @@ namespace Food2Desk.Shared.Model
 {
     public class ProductModel
     {
-        public Guid Id { get; set; }
+        public string Id { get; set; } //mudar pra guid
         public string Name { get; set; }
         public string? Description { get; set; }
         public double Price { get; set; }
-        public int Category { get; set; }
+        public int? Category { get; set; }
+        public int? Quantity { get; set; }
         public string? ImageUrl { get; set; }
 
         public static ProductModel BuildModel(ProductDTO dto)
