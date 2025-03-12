@@ -21,15 +21,15 @@ namespace Food2Desk.Controllers
         }
 
         [HttpPost("")]
-        public IActionResult Insert(OrderModel model)
+        public OrderModel Insert(OrderModel model)
         {
-            return Ok();
+            return model;
         }
 
         [HttpPut("")]
-        public IActionResult Update()
+        public OrderModel Update(OrderModel model)
         {
-            return Ok();
+            return model;
         }
 
         [HttpDelete("")]
@@ -37,5 +37,14 @@ namespace Food2Desk.Controllers
         {
             return Ok();
         }
+
+        #region test
+        [HttpPost("test")]
+        public IActionResult Test(OrderModel model)
+        {
+            var a = model;
+            return Ok();
+        }
+        #endregion
     }
 }
