@@ -11,9 +11,9 @@ namespace Food2Desk.DataAccess.Product
         {
             List<ProductDTO> list = new List<ProductDTO>()
             {
-                new ProductDTO {Id = "8CFB6326-8E5E-4BFE-B51E-95F5E2E79A6E", Name = "Coxinha", Description = "Coxinha de frango com ou sem catupiry", Category = 2, Price = 7.99, ImageUrl = "images/coxinha.jpg"},
-                new ProductDTO {Id = "76B62969-25CE-4FBC-BE96-19B2447C69E7", Name = "Coca cola", Description = "350ml", Category = 1, Price = 5.99, ImageUrl = "images/coca.png"},
-                new ProductDTO {Id = "64794FA6-31A2-4E33-8E3C-3D8FE8A57827", Name = "Agua", Description = "Com/Sem gas - 500ml", Category = 1, Price = 2.99, ImageUrl = "images/agua.jp"}
+                new ProductDTO {Id = Guid.Parse("8CFB6326-8E5E-4BFE-B51E-95F5E2E79A6E"), Name = "Coxinha", Description = "Coxinha de frango com ou sem catupiry", Category = 2, Price = 7.99, ImageUrl = "images/coxinha.jpg"},
+                new ProductDTO {Id = Guid.Parse("76B62969-25CE-4FBC-BE96-19B2447C69E7"), Name = "Coca cola", Description = "350ml", Category = 1, Price = 5.99, ImageUrl = "images/coca.png"},
+                new ProductDTO {Id = Guid.Parse("64794FA6-31A2-4E33-8E3C-3D8FE8A57827"), Name = "Agua", Description = "Com/Sem gas - 500ml", Category = 1, Price = 2.99, ImageUrl = "images/agua.jp"}
             };
 
             return list;
@@ -22,14 +22,15 @@ namespace Food2Desk.DataAccess.Product
         public ProductDTO Get(Guid id)
         {
             List<ProductDTO> list = List();
-            return list[0];
-            //return list.FirstOrDefault(i => i?.Id == id);
+     
+            return list.FirstOrDefault(i => i?.Id == id);
         }
 
         public ProductDTO Get(string id)
         {
             List<ProductDTO> list = List();
-            return list.FirstOrDefault(i => i?.Id == id);
+            return list[0];
+            //return list.FirstOrDefault(i => i?.Id == id);
         }
 
         public ProductDTO Insert(ProductDTO dto)
