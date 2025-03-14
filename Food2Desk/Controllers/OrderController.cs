@@ -1,6 +1,7 @@
 ﻿using Food2Desk.Shared.Interfaces.Order;
 using Food2Desk.Shared.Model;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Design;
 
 namespace Food2Desk.Controllers
 {
@@ -20,10 +21,16 @@ namespace Food2Desk.Controllers
             return Ok();
         }
 
-        [HttpPost("")]
-        public OrderModel Insert(OrderModel model)
+        [HttpGet("list")]
+        public IActionResult List()
         {
-            return model;
+            return Ok();
+        }
+
+        [HttpPost("")]
+        public JsonResult Insert(OrderModel model)
+        {
+            return new JsonResult(model);
         }
 
         [HttpPut("")]
