@@ -24,7 +24,7 @@ namespace Food2Desk.Controllers
         [HttpGet("list")]
         public IActionResult List()
         {
-            return Ok(); //commit de doming
+            return Ok(); //commit de segunda
         }
 
         [HttpPost("")]
