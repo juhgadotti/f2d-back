@@ -16,5 +16,58 @@ namespace Food2Desk.DataAccess.Order
 
             return model;
         }
+
+        public List<OrderModel> List()
+        {
+            var orders = new List<OrderModel>
+            {
+                new OrderModel
+                {
+                    Id = Guid.NewGuid(),
+                    UserId = Guid.NewGuid(),
+                    UserName = "Carlos Silva",
+                    DeliveryNow = true,
+                    DeliveryTime = null,
+                    Office = new OfficeModel { Name = "Escritório A", Floor = 5 },
+                    Cart = new List<ProductModel>
+                    {
+                        new ProductModel { Id = Guid.Parse("8CFB6326-8E5E-4BFE-B51E-95F5E2E79A6E"), Name = "Coxinha", Price = 7.99M, Quantity = 2 },
+                        new ProductModel { Id = Guid.Parse("76B62969-25CE-4FBC-BE96-19B2447C69E7"), Name = "Coca cola", Price = 5.99M, Quantity = 1 }
+                    },
+                    TotalCharge = (2 * 7.99M) + (1 * 5.99M)
+                },
+                new OrderModel
+                {
+                    Id = Guid.NewGuid(),
+                    UserId = Guid.NewGuid(),
+                    UserName = "Ana Souza",
+                    DeliveryNow = false,
+                    DeliveryTime = "14:30",
+                    Office = new OfficeModel { Name = "Escritório B", Floor = 3 },
+                    Cart = new List<ProductModel>
+                    {
+                        new ProductModel { Id = Guid.Parse("8CFB6326-8E5E-4BFE-B51E-93G1E2E79A6E"), Name = "Pastel", Price = 10.00M, Quantity = 1 },
+                        new ProductModel { Id = Guid.Parse("64794FA6-31A2-4E33-8E3C-3D8FE8A57827"), Name = "Agua", Price = 2.99M, Quantity = 2 }
+                    },
+                    TotalCharge = (1 * 10.00M) + (2 * 2.99M)
+                },
+                new OrderModel
+                {
+                    Id = Guid.NewGuid(),
+                    UserId = Guid.NewGuid(),
+                    UserName = "João Pereira",
+                    DeliveryNow = true,
+                    DeliveryTime = null,
+                    Office = new OfficeModel { Name = "Escritório C", Floor = 1 },
+                    Cart = new List<ProductModel>
+                    {
+                        new ProductModel { Id = Guid.Parse("8CFB6326-8E5E-4BFE-B51E-95F5E2E79A6E"), Name = "Coxinha", Price = 7.99M, Quantity = 3 },
+                        new ProductModel { Id = Guid.Parse("8CFB6326-8E5E-4BFE-B51E-93G1E2E79A6E"), Name = "Pastel", Price = 10.00M, Quantity = 2 },
+                        new ProductModel { Id = Guid.Parse("76B62969-25CE-4FBC-BE96-19B2447C69E7"), Name = "Coca cola", Price = 5.99M, Quantity = 1 }
+                    },
+                    TotalCharge = (3 * 7.99M) + (2 * 10.00M) + (1 * 5.99M)
+                }
+            };            
+        }
     }
 }
