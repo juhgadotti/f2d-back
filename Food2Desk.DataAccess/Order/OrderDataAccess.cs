@@ -25,8 +25,25 @@ namespace Food2Desk.DataAccess.Order
             model.UserName = "deu certinho";
 
             return model;
-        }       
+        }
 
+
+        public OrderModel Get() {
+            return new OrderModel() {
+                Id = Guid.NewGuid(),
+                UserId = Guid.NewGuid(),
+                UserName = "Carlos Silva",
+                DeliveryNow = true,
+                DeliveryTime = null,
+                Office = new OfficeModel { OfficeId = Guid.NewGuid(), Floor = "12", Number = "331" },
+                Cart = new List<ProductModel>
+                    {
+                        new ProductModel { Id = Guid.Parse("8CFB6326-8E5E-4BFE-B51E-95F5E2E79A6E"), Name = "Coxinha", Price = 7.99, Quantity = 2 },
+                        new ProductModel { Id = Guid.Parse("76B62969-25CE-4FBC-BE96-19B2447C69E7"), Name = "Coca cola", Price = 5.99, Quantity = 1 }
+                    },
+                TotalCharge = (2 * 7.99M) + (1 * 5.99M)
+            };
+        }
         public List<OrderModel> List()
         {
             List<ProductDTO> productList = ProductDA.List();
