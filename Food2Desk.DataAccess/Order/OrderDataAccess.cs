@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Food2Desk.Shared.Interfaces.Order;
 using Food2Desk.Shared.Model;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Food2Desk.DataAccess.Order
 {
@@ -16,6 +18,7 @@ namespace Food2Desk.DataAccess.Order
 
             return model;
         }
+       
 
         public List<OrderModel> List()
         {
@@ -28,7 +31,7 @@ namespace Food2Desk.DataAccess.Order
                     UserName = "Carlos Silva",
                     DeliveryNow = true,
                     DeliveryTime = null,
-                    Office = new OfficeModel { Name = "Escritório A", Floor = 5 },
+                    Office = new OfficeModel { OfficeId = Guid.NewGuid(), Floor = "12", Number = "331" },
                     Cart = new List<ProductModel>
                     {
                         new ProductModel { Id = Guid.Parse("8CFB6326-8E5E-4BFE-B51E-95F5E2E79A6E"), Name = "Coxinha", Price = 7.99M, Quantity = 2 },
@@ -43,7 +46,7 @@ namespace Food2Desk.DataAccess.Order
                     UserName = "Ana Souza",
                     DeliveryNow = false,
                     DeliveryTime = "14:30",
-                    Office = new OfficeModel { Name = "Escritório B", Floor = 3 },
+                    Office = new OfficeModel { OfficeId = Guid.NewGuid(), Floor = "12", Number = "321" },
                     Cart = new List<ProductModel>
                     {
                         new ProductModel { Id = Guid.Parse("8CFB6326-8E5E-4BFE-B51E-93G1E2E79A6E"), Name = "Pastel", Price = 10.00M, Quantity = 1 },
@@ -58,7 +61,7 @@ namespace Food2Desk.DataAccess.Order
                     UserName = "João Pereira",
                     DeliveryNow = true,
                     DeliveryTime = null,
-                    Office = new OfficeModel { Name = "Escritório C", Floor = 1 },
+                    Office = new OfficeModel { OfficeId = Guid.NewGuid(), Floor = "1", Number = "31" },
                     Cart = new List<ProductModel>
                     {
                         new ProductModel { Id = Guid.Parse("8CFB6326-8E5E-4BFE-B51E-95F5E2E79A6E"), Name = "Coxinha", Price = 7.99M, Quantity = 3 },
@@ -67,7 +70,9 @@ namespace Food2Desk.DataAccess.Order
                     },
                     TotalCharge = (3 * 7.99M) + (2 * 10.00M) + (1 * 5.99M)
                 }
-            };            
+            };
+
+            return orders;
         }
     }
 }
