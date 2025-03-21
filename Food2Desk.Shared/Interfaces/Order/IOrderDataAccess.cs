@@ -9,6 +9,8 @@ namespace Food2Desk.Shared.Interfaces.Order
 {
     public interface IOrderDataAccess
     {
+        public OrderModel Get();
+        public List<OrderModel> List();
         public OrderModel Insert(OrderModel model);
     }
 }

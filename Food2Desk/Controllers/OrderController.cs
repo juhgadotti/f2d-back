@@ -16,9 +16,10 @@ namespace Food2Desk.Controllers
         }
 
         [HttpGet("")]
-        public IActionResult Get()
+        public JsonResult Get()            
         {
-            return Ok();
+            var order = OrderCore.Get();
+            return new JsonResult(order);
         }
 
         [HttpGet("list")]
