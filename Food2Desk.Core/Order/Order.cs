@@ -1,4 +1,6 @@
-﻿using Food2Desk.Shared.Interfaces.Order;
+﻿using Food2Desk.Shared.DTOs;
+using Food2Desk.Shared.Interfaces.Order;
+using Food2Desk.Shared.Interfaces.Product;
 using Food2Desk.Shared.Model;
 using System;
 using System.Collections.Generic;
@@ -11,9 +13,11 @@ namespace Food2Desk.Core.Order
     public class Order : IOrderCore
     {
         private readonly IOrderDataAccess OrderDA;
-        public Order(IOrderDataAccess orderDA)
+        private readonly IProductDataAccess ProductDA;
+        public Order(IOrderDataAccess orderDA, IProductDataAccess productDA)
         {
             OrderDA = orderDA;
+            ProductDA = productDA;
         }
 
         public OrderModel Get()
@@ -28,7 +32,15 @@ namespace Food2Desk.Core.Order
 
         public OrderModel BuildOrder(Guid id)
         {
-            var order = OrderDA.list().FirstOrDefault(i => i.id == id);
+            var order = OrderDA.List().FirstOrDefault(i => i.Id == id);
+
+            List<ProductDTO> products = ProductDA.List();
+
+            //List<ProductModel> productModel = ProductModel.BuildModel();
+
+            //order.Cart = products;
+
+            return order;
         }
     }
 }
