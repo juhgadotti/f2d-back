@@ -20,5 +20,10 @@ namespace Food2Desk.Core.Order
         {
             return OrderDA.Insert(model);
         }
+
+        public OrderModel BuildOrder(Guid id)
+        {
+            var order = OrderDA.list().FirstOrDefault(i => i.id == id);
+        }
     }
 }
