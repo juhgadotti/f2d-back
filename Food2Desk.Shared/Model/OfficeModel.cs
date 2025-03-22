@@ -14,7 +14,7 @@ namespace Food2Desk.Shared.Model
         public String Number { get; set; }
         public String? Block { get; set; }
         public String? Enterprise { get; set; }
-        public Guid? EnterpriseId { get; set; }
+        public Guid EnterpriseId { get; set; }
         public String? Obs { get; set; }
 
         public static OfficeModel BuildModel(OfficeDTO dto)
@@ -28,6 +28,20 @@ namespace Food2Desk.Shared.Model
                 Enterprise = dto.Enterprise,
                 EnterpriseId = dto.EnterpriseId,
                 Obs = dto.Obs
+            };
+        }
+
+        public static OfficeDTO BuildDTO(OfficeModel model)
+        {
+            return new OfficeDTO
+            {
+                OfficeId = model.OfficeId,
+                Floor = model.Floor,
+                Number = model.Number,
+                Block = model.Block,
+                Enterprise = model.Enterprise,
+                EnterpriseId = model.EnterpriseId,
+                Obs = model.Obs
             };
         }
     }

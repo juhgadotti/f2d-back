@@ -15,7 +15,7 @@ namespace Food2Desk.Controllers
             OrderCore = order;
         }
 
-        [HttpGet("")]
+        [HttpGet]
         public JsonResult Get()            
         {
             var order = OrderCore.Get();
@@ -25,7 +25,7 @@ namespace Food2Desk.Controllers
         [HttpGet("list")]
         public IActionResult List()
         {
-            return Ok(); //commit de segunda
+            return Ok(); 
         }
 
         [HttpPost("")]
