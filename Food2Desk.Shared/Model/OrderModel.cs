@@ -16,6 +16,12 @@ namespace Food2Desk.Shared.Model
         public bool DeliveryNow { get; set; }
         public string? DeliveryTime { get; set; }
         public OfficeModel? Office { get; set; }
-        public List<ProductModel> Cart { get; set; }
+        public List<ProductCart> Cart { get; set; }
+    }
+
+    public class ProductCart
+    {
+        public Guid ProductId { get; set; }
+        public Number Quantity { get; set; }
     }
 }
