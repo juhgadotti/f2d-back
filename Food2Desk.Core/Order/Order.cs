@@ -21,6 +21,11 @@ namespace Food2Desk.Core.Order
             return OrderDA.Get();
         }
 
+        public OrderModel Update(OrderModel model)
+        {
+            return OrderDA.Update(model);
+        }
+
         public OrderModel Insert(OrderModel model)
         {
             return OrderDA.Insert(model);

@@ -10,6 +10,7 @@ namespace Food2Desk.Shared.Interfaces.Order
     public interface IOrderCore
     {
         public OrderModel Get();
+        public OrderModel Update(OrderModel model);
         public OrderModel Insert(OrderModel model);
     }
 }

@@ -44,6 +44,12 @@ namespace Food2Desk.DataAccess.Order
                 TotalCharge = (2 * 7.99M) + (1 * 5.99M)
             };
         }
+
+        public OrderModel Update(OrderModel model)
+        {
+            return model;
+        }
+
         public List<OrderModel> List()
         {
             List<ProductDTO> productList = ProductDA.List();
