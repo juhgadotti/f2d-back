@@ -13,5 +13,7 @@ namespace Food2Desk.Shared.Interfaces.Order
         public OrderModel Update(OrderModel model);
         public List<OrderModel> List();
         public OrderModel Insert(OrderModel model);
+
+        public OrderModel BuildOrder(Guid id);
     }
 }
