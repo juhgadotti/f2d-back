@@ -1,7 +1,6 @@
 ﻿using Food2Desk.Shared.Interfaces.Order;
 using Food2Desk.Shared.Model;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Design;
 
 namespace Food2Desk.Controllers
 {

@@ -34,7 +34,7 @@ namespace Food2Desk.Shared.Model
             };
         }
 
-        public OrderDTO BuildDTO(OrderModel model)
+        public static OrderDTO BuildDTO(OrderModel model)
         {
             return new OrderDTO
             {

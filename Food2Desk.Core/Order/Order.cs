@@ -25,17 +25,22 @@ namespace Food2Desk.Core.Order
             return OrderDA.Get(id);
         }
 
-        public OrderModel Update(OrderModel model)
+        public List<OrderDTO> List()
         {
-            return OrderDA.Update(model);
+            return OrderDA.List();
         }
 
-        public OrderModel Insert(OrderModel model)
+        public OrderDTO Update(OrderDTO dto)
         {
-            return OrderDA.Insert(model);
+            return OrderDA.Update(dto);
         }
 
-        public OrderModel BuildOrder(Guid id)
+        public OrderDTO Insert(OrderDTO dto)
+        {
+            return OrderDA.Insert(dto);
+        }
+
+        public OrderDTO BuildOrder(Guid id)
         {
             var order = OrderDA.List().FirstOrDefault(i => i.Id == id);
 
