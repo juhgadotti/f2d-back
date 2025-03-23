@@ -20,11 +20,11 @@ namespace Food2Desk.DataAccess.Order
             ProductDA = productDA;
         }
 
-        public OrderModel Insert(OrderModel model)
+        public OrderDTO Insert(OrderDTO dto)
         {
-            model.UserName = "deu certinho";
+            dto.UserName = "deu certinho";
 
-            return model;
+            return dto;
         }
 
 

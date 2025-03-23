@@ -31,7 +31,9 @@ namespace Food2Desk.Controllers
         [HttpPost("")]
         public JsonResult Insert(OrderModel model)
         {
-            return new JsonResult(model);
+            model.Id = Guid.NewGuid();
+            var dto = OrderModel.BuildDTO(model);
+            return new JsonResult(OrderCore.Insert(dto));
         }
 
         [HttpPut("")]
