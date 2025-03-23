@@ -1,4 +1,5 @@
-﻿using Food2Desk.Shared.Interfaces.Order;
+﻿using Food2Desk.Core.Order;
+using Food2Desk.Shared.Interfaces.Order;
 using Food2Desk.Shared.Model;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,17 +15,19 @@ namespace Food2Desk.Controllers
             OrderCore = order;
         }
 
-        [HttpGet]
+        [HttpGet("get")]
         public JsonResult Get(Guid id)            
         {
             var order = OrderCore.Get(id);
             return new JsonResult(order);
         }
 
-        [HttpGet("list")]
-        public IActionResult List()
+        [HttpGet]
+        public JsonResult List()
         {
-            return Ok(); 
+            var list = OrderCore.List();
+
+            return new JsonResult(list);
         }
 
         [HttpPost("")]

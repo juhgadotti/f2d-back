@@ -41,14 +41,14 @@ namespace Food2Desk.DataAccess.Order
                 {
                     Id = Guid.NewGuid(),
                     UserId = Guid.NewGuid(),
-                    UserName = "Carlos Silva",
+                    UserName = "Wanessa Ventura <3",
                     DeliveryNow = true,
                     DeliveryTime = null,
                     Office = new OfficeDTO { OfficeId = Guid.NewGuid(), Floor = "12", Number = "331" },
                     Cart = new List<ProductCartDTO>
                     {
-                        new ProductCartDTO { ProductId = Guid.Parse("8CFB6326-8E5E-4BFE-B51E-95F5E2E79A6E"), Quantity = 2 },
-                        new ProductCartDTO { ProductId = Guid.Parse("76B62969-25CE-4FBC-BE96-19B2447C69E7"),  Quantity = 1 }
+                        new ProductCartDTO { ProductId = Guid.NewGuid(), Quantity = 2 },
+                        new ProductCartDTO { ProductId = Guid.NewGuid(),  Quantity = 1 }
                     },
                     TotalCharge = (2 * 7.99M) + (1 * 5.99M)
                 },
@@ -62,8 +62,8 @@ namespace Food2Desk.DataAccess.Order
                     Office = new OfficeDTO { OfficeId = Guid.NewGuid(), Floor = "12", Number = "321" },
                     Cart = new List<ProductCartDTO>
                     {
-                        new ProductCartDTO { ProductId = Guid.Parse("8CFB6326-8E5E-4BFE-B51E-93G1E2E79A6E"), Quantity = 1 },
-                        new ProductCartDTO { ProductId = Guid.Parse("64794FA6-31A2-4E33-8E3C-3D8FE8A57827"), Quantity = 2 }
+                        new ProductCartDTO { ProductId = Guid.NewGuid(), Quantity = 1 },
+                        new ProductCartDTO { ProductId = Guid.NewGuid(), Quantity = 2 }
                     },
                     TotalCharge = (1 * 10.00M) + (2 * 2.99M)
                 },
@@ -77,9 +77,9 @@ namespace Food2Desk.DataAccess.Order
                     Office = new OfficeDTO { OfficeId = Guid.NewGuid(), Floor = "1", Number = "31" },
                     Cart = new List<ProductCartDTO>
                     {
-                        new ProductCartDTO { ProductId = Guid.Parse("8CFB6326-8E5E-4BFE-B51E-95F5E2E79A6E"), Quantity = 3 },
-                        new ProductCartDTO { ProductId = Guid.Parse("8CFB6326-8E5E-4BFE-B51E-93G1E2E79A6E"), Quantity = 2 },
-                        new ProductCartDTO { ProductId = Guid.Parse("76B62969-25CE-4FBC-BE96-19B2447C69E7"), Quantity = 1 }
+                        new ProductCartDTO { ProductId = Guid.NewGuid(), Quantity = 3 },
+                        new ProductCartDTO { ProductId = Guid.NewGuid(), Quantity = 2 },
+                        new ProductCartDTO { ProductId = Guid.NewGuid(), Quantity = 1 }
                     },
                     TotalCharge = (3 * 7.99M) + (2 * 10.00M) + (1 * 5.99M)
                 }
