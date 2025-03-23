@@ -28,21 +28,9 @@ namespace Food2Desk.DataAccess.Order
         }
 
 
-        public OrderModel Get() {
-            return new OrderModel() {
-                Id = Guid.NewGuid(),
-                UserId = Guid.NewGuid(),
-                UserName = "Carlos Silva",
-                DeliveryNow = true,
-                DeliveryTime = null,
-                Office = new OfficeModel { OfficeId = Guid.NewGuid(), Floor = "12", Number = "331" },
-                Cart = new List<ProductCartModel>
-                    {
-                        new ProductCartModel { ProductId = Guid.Parse("8CFB6326-8E5E-4BFE-B51E-95F5E2E79A6E"), Quantity = 2 },
-                        new ProductCartModel { ProductId = Guid.Parse("76B62969-25CE-4FBC-BE96-19B2447C69E7"), Quantity = 1 }
-                    },
-                TotalCharge = (2 * 7.99M) + (1 * 5.99M)
-            };
+        public OrderDTO Get(Guid id) {
+            var list = List();
+            return list.FirstOrDefault(x => x.Id == id);
         }
 
         public OrderModel Update(OrderModel model)

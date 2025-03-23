@@ -16,9 +16,9 @@ namespace Food2Desk.Controllers
         }
 
         [HttpGet]
-        public JsonResult Get()            
+        public JsonResult Get(Guid id)            
         {
-            var order = OrderCore.Get();
+            var order = OrderCore.Get(id);
             return new JsonResult(order);
         }
 

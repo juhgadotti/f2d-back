@@ -20,9 +20,9 @@ namespace Food2Desk.Core.Order
             ProductDA = productDA;
         }
 
-        public OrderModel Get()
+        public OrderDTO Get(Guid id)
         {
-            return OrderDA.Get();
+            return OrderDA.Get(id);
         }
 
         public OrderModel Update(OrderModel model)
