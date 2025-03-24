@@ -44,6 +44,13 @@ namespace Food2Desk.Controllers
             return model;
         }
 
+        [HttpPut("status/{id:Guid}")]
+
+        public IActionResult UpdateOrderStatus(Int32 status)
+        {
+            return Ok();
+        }
+
         [HttpDelete("")]
         public IActionResult Delete()
         {
