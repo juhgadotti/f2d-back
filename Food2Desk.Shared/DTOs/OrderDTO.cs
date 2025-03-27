@@ -15,6 +15,7 @@ namespace Food2Desk.Shared.DTOs
         public decimal? TotalCharge { get; set; }
         public bool DeliveryNow { get; set; }
         public string? DeliveryTime { get; set; }
+        public Int32 Status { get; set; }
         public OfficeDTO Office { get; set; }
         public required List<ProductCartDTO> Cart { get; set; }
     }

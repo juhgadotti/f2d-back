@@ -15,6 +15,7 @@ namespace Food2Desk.Shared.Model
         public decimal? TotalCharge { get; set; }
         public bool DeliveryNow { get; set; }
         public string? DeliveryTime { get; set; }
+        public Int32 Status { get; set; } 
         public OfficeModel Office { get; set; }
         public List<ProductCartModel> Cart { get; set; }
 
@@ -29,6 +30,7 @@ namespace Food2Desk.Shared.Model
                 TotalCharge = dto.TotalCharge,
                 DeliveryNow = dto.DeliveryNow,
                 DeliveryTime = dto.DeliveryTime,
+                Status = dto.Status,
                 Office = OfficeModel.BuildModel(dto.Office),
                 Cart = dto.Cart.Select(ProductCartModel.BuildCartModel).ToList()
             };
@@ -44,6 +46,7 @@ namespace Food2Desk.Shared.Model
                 TotalCharge = model.TotalCharge,
                 DeliveryNow = model.DeliveryNow,
                 DeliveryTime = model.DeliveryTime,
+                Status = model.Status,
                 Office = OfficeModel.BuildDTO(model.Office),
                 Cart = model.Cart.Select(ProductCartModel.BuildCartDTO).ToList()
             };

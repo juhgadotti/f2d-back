@@ -14,5 +14,7 @@ namespace Food2Desk.Shared.Enum
         //1 = making
         //2= delivery
         //3= concluido
+
+        //export enum EmployeeRole { Desenvolvedor = 1, QA = 2, Suporte = 3,    'Líder Desenvolvedor' = 4,    'Líder Suporte' = 5, CEO = 6 };
     }
 }

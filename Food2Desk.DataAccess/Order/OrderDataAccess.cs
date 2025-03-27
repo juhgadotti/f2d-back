@@ -33,7 +33,7 @@ namespace Food2Desk.DataAccess.Order
 
         public List<OrderDTO> List()
         {
-            List<ProductDTO> productList = ProductDA.List();
+            //List<ProductCartDTO> productList = ProductDA.List();
 
             var orders = new List<OrderDTO>
             {
@@ -82,6 +82,21 @@ namespace Food2Desk.DataAccess.Order
                         new ProductCartDTO { ProductId = Guid.NewGuid(), Quantity = 1 }
                     },
                     TotalCharge = (3 * 7.99M) + (2 * 10.00M) + (1 * 5.99M)
+                },
+                new OrderDTO
+                {
+                    Id = Guid.NewGuid(),
+                    UserId = Guid.NewGuid(),
+                    UserName = "Rafael Lendario",
+                    DeliveryNow = true,
+                    DeliveryTime = null,
+                    Office = new OfficeDTO { OfficeId = Guid.NewGuid(), Floor = "12", Number = "331" },
+                    Cart = new List<ProductCartDTO>
+                    {
+                        new ProductCartDTO { ProductId = Guid.NewGuid(), Quantity = 2 },
+                        new ProductCartDTO { ProductId = Guid.NewGuid(),  Quantity = 1 }
+                    },
+                    TotalCharge = (2 * 1M) + (1 * 3M)
                 }
             };
 
@@ -91,6 +106,21 @@ namespace Food2Desk.DataAccess.Order
         public OrderDTO BuildOrder(Guid id)
         {
             return List().FirstOrDefault(p => p.Id == id);
+        }
+
+        public List<ProductCartDTO> ListCart()
+        {
+            List<ProductDTO> productList = ProductDA.List();
+
+            var cartProducts = new List<ProductCartDTO>()
+            {
+                new ProductCartDTO { ProductId = productList[0].Id, Quantity = 1},
+                new ProductCartDTO { ProductId = productList[1].Id, Quantity = 2},
+                new ProductCartDTO { ProductId = productList[2].Id, Quantity = 3},
+                new ProductCartDTO { ProductId = productList[3].Id, Quantity = 2},
+            };
+
+            return cartProducts;
         }
     }
 }
