@@ -18,16 +18,17 @@ namespace Food2Desk.Controllers
         [HttpGet("get")]
         public JsonResult Get(Guid id)            
         {
-            var order = OrderCore.Get(id);
-            return new JsonResult(order);
+            var orderDTO = OrderCore.Get(id);
+
+            return new JsonResult(OrderModel.BuildModel(orderDTO));
         }
 
         [HttpGet]
         public JsonResult List()
         {
-            var list = OrderCore.List();
+            var listDTO = OrderCore.List();
 
-            return new JsonResult(list);
+            return new JsonResult(listDTO.Select(OrderModel.BuildModel).ToList());
         }
 
         [HttpPost("")]

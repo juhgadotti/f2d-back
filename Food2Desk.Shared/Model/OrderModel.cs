@@ -10,6 +10,7 @@ namespace Food2Desk.Shared.Model
     public class OrderModel
     {
         public Guid Id { get; set; }
+        public Int32 Code {  get; set; }
         public Guid UserId { get; set; }
         public string? UserName { get; set; }
         public decimal? TotalCharge { get; set; }
@@ -25,6 +26,7 @@ namespace Food2Desk.Shared.Model
             return new OrderModel
             {
                 Id = dto.Id,
+                Code = dto.Code,
                 UserId = dto.UserId,
                 UserName = dto.UserName,
                 TotalCharge = dto.TotalCharge,
@@ -41,6 +43,7 @@ namespace Food2Desk.Shared.Model
             return new OrderDTO
             {
                 Id = model.Id,
+                Code = model.Code,
                 UserId = model.UserId,
                 UserName = model.UserName,
                 TotalCharge = model.TotalCharge,
@@ -57,14 +60,15 @@ namespace Food2Desk.Shared.Model
     {
         public Guid ProductId { get; set; }
         public Int32 Quantity { get; set; }
+        public decimal Price { get; set; }
 
         public static ProductCartDTO BuildCartDTO(ProductCartModel cartModel)
         {
-            return new ProductCartDTO { ProductId = cartModel.ProductId, Quantity = cartModel.Quantity };
+            return new ProductCartDTO { ProductId = cartModel.ProductId, Quantity = cartModel.Quantity, Price = cartModel.Price };
         }
         public static ProductCartModel BuildCartModel(ProductCartDTO cartDTO)
         {
-            return new ProductCartModel { ProductId = cartDTO.ProductId, Quantity = cartDTO.Quantity };
+            return new ProductCartModel { ProductId = cartDTO.ProductId, Quantity = cartDTO.Quantity, Price = cartDTO.Price };
         }
     }
 }
