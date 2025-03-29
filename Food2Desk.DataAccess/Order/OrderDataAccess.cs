@@ -34,7 +34,7 @@ namespace Food2Desk.DataAccess.Order
         public List<OrderDTO> List()
         {
             List<ProductCartDTO> productCartList = ListCart();
-
+            
             var orders = new List<OrderDTO>
             {
                 new OrderDTO
@@ -48,7 +48,7 @@ namespace Food2Desk.DataAccess.Order
                     Status = 1,
                     Office = new OfficeDTO { OfficeId = Guid.NewGuid(), Floor = "12", Number = "331" },
                     Cart = productCartList,
-                    TotalCharge = (2 * 7.99M) + (1 * 5.99M) 
+                    TotalCharge = 0 
                 },
                 new OrderDTO
                 {
@@ -61,7 +61,7 @@ namespace Food2Desk.DataAccess.Order
                     Status = 1,
                     Office = new OfficeDTO { OfficeId = Guid.NewGuid(), Floor = "12", Number = "321" },
                     Cart = productCartList,
-                    TotalCharge = (1 * 10.00M) + (2 * 2.99M)
+                    TotalCharge = 0
                 },
                 new OrderDTO
                 {
@@ -74,7 +74,7 @@ namespace Food2Desk.DataAccess.Order
                     Status = 2,
                     Office = new OfficeDTO { OfficeId = Guid.NewGuid(), Floor = "1", Number = "31" },
                     Cart = productCartList,
-                    TotalCharge = (3 * 7.99M) + (2 * 10.00M) + (1 * 5.99M)
+                    TotalCharge = 0
                 },
                 new OrderDTO
                 {
@@ -87,7 +87,7 @@ namespace Food2Desk.DataAccess.Order
                     Status = 3,
                     Office = new OfficeDTO { OfficeId = Guid.NewGuid(), Floor = "12", Number = "331" },
                     Cart = productCartList,
-                    TotalCharge = 3
+                    TotalCharge = 0
                 }
             };
 
@@ -105,10 +105,10 @@ namespace Food2Desk.DataAccess.Order
 
             var cartProducts = new List<ProductCartDTO>()
             {
-                new ProductCartDTO { ProductId = productList[0].Id, Quantity = 1},
-                new ProductCartDTO { ProductId = productList[1].Id, Quantity = 2},
-                new ProductCartDTO { ProductId = productList[2].Id, Quantity = 3},
-                new ProductCartDTO { ProductId = productList[3].Id, Quantity = 2},
+                new ProductCartDTO { ProductId = productList[0].Id, Quantity = 1, Price = productList[0].Price, Name = productList[0].Name},
+                new ProductCartDTO { ProductId = productList[1].Id, Quantity = 2, Price = productList[1].Price, Name = productList[1].Name},
+                new ProductCartDTO { ProductId = productList[2].Id, Quantity = 3, Price = productList[2].Price, Name = productList[2].Name},
+                new ProductCartDTO { ProductId = productList[3].Id, Quantity = 2, Price = productList[3].Price, Name = productList[3].Name},
             };
 
             return cartProducts;

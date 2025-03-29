@@ -45,16 +45,16 @@ namespace Food2Desk.Controllers
         }
 
         [HttpDelete("")]
-        public JsonResult Delete(ProductModel model)
+        public JsonResult Delete(ProductModel model) //TODO
         {
             return new JsonResult(model);
         }
 
-        [HttpPut("")]
+        [HttpPut("")] //test from front
         public JsonResult UpdateThenList(ProductModel model)
         {
             ProductDTO dto = ProductModel.BuildDTO(model);
-            List<ProductDTO> newListDTO = ProductCore.UpdateThenList(dto);
+            List<ProductDTO> newListDTO = ProductCore.UpdateThenList(dto);            
             return new JsonResult(model);
         }
 

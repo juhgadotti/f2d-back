@@ -27,7 +27,10 @@ namespace Food2Desk.Core.Order
 
         public List<OrderDTO> List()
         {
-            return OrderDA.List();
+            var list = OrderDA.List();
+            list.ForEach(p => p.TotalCharge = p.Cart.Sum(u => u.Quantity * u.Price));
+
+            return list;
         }
 
         public OrderDTO Update(OrderDTO dto)
