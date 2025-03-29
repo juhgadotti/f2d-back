@@ -43,7 +43,12 @@ namespace Food2Desk.Core.Order
             return OrderDA.Insert(dto);
         }
 
-        public OrderDTO BuildOrder(Guid id)
+        public void UpdateStatus(Guid id, Int32 status)
+        {
+            //orderDA
+        }
+
+        public OrderDTO BuildOrder(Guid id) //test
         {
             var order = OrderDA.List().FirstOrDefault(i => i.Id == id);
 
@@ -55,5 +60,7 @@ namespace Food2Desk.Core.Order
 
             return order;
         }
+
+
     }
 }

@@ -45,10 +45,11 @@ namespace Food2Desk.Controllers
             return model;
         }
 
-        [HttpPut("status/{id:Guid}")]
-
-        public IActionResult UpdateOrderStatus(Int32 status)
+        
+        [HttpPut("status")] // /{id:Guid}
+        public IActionResult UpdateOrderStatus([FromBody] OrderModel order)
         {
+            OrderCore.UpdateStatus(order.Id, order.Status);
             return Ok();
         }
 

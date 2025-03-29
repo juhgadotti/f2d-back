@@ -14,5 +14,6 @@ namespace Food2Desk.Shared.Interfaces.Order
         public List<OrderDTO> List();
         public OrderDTO Update(OrderDTO dto);
         public OrderDTO Insert(OrderDTO dto);
+        public void UpdateStatus(Guid id, Int32 status);
     }
 }
