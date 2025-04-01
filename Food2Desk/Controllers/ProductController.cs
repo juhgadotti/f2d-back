@@ -51,6 +51,13 @@ namespace Food2Desk.Controllers
             return new JsonResult(model);
         }
 
+        [HttpGet("categories")]
+        public JsonResult GetCategories()
+        {
+            var categoriesList = ProductCore.List().GroupBy(a => a.Category).ToList();
+            return new JsonResult(categoriesList);
+        }
+
         [HttpPut("")] //test from front
         public JsonResult UpdateThenList(ProductModel model)
         {
