@@ -46,5 +46,12 @@ namespace Food2Desk.Core
         {
             return ProductDA.UpdateThenList(dto);
         }
+
+        public List<String> CategoriesList()
+        {
+            var productList = List();
+            var categories = productList.DistinctBy(pr => pr.Category).Select(ct => ct.Category).ToList();
+            categories.ForEach(categorieNumber => )
+        }
     }
 }
