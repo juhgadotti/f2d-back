@@ -54,7 +54,7 @@ namespace Food2Desk.Controllers
         [HttpGet("categories")]
         public JsonResult GetCategories()
         {
-            var categoriesList = ProductCore.List().GroupBy(a => a.Category).ToList();
+            var categoriesList = ProductCore.ListCategories();
             return new JsonResult(categoriesList);
         }
 
