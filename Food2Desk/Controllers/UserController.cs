@@ -25,6 +25,14 @@ namespace Food2Desk.Controllers
             return new JsonResult(user);
         }
 
+        [HttpPost("")]
+        public JsonResult Insert(UserModel user)
+        {
+            var a = user;
+
+            return new JsonResult(user);
+        }
+
 
     }
 }
