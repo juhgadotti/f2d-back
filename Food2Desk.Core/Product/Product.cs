@@ -29,6 +29,10 @@ namespace Food2Desk.Core
 
         public ProductDTO Insert(ProductDTO dto)
         {            
+            var alreadyExist = ProductDA.List().Any(x => x.Name == dto.Name);
+
+            if (alreadyExist) throw new Exception("Já existe um produto cadastrado com esse nome!");
+            
             return ProductDA.Insert(dto);
         }
 
