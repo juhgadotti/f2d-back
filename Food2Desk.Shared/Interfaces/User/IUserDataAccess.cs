@@ -10,5 +10,8 @@ namespace Food2Desk.Shared.Interfaces.User
     public interface IUserDataAccess
     {
         public UserModel Get();
+
+        public UserAuthenticationModel GetUserInfo(string email);
+        public List<UserAuthenticationModel> List();
     }
 }

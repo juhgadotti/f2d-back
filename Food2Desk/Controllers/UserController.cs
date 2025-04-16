@@ -33,6 +33,20 @@ namespace Food2Desk.Controllers
             return new JsonResult(user);
         }
 
+        [HttpGet("authentication")]
+        public IActionResult Authentication(UserAuthenticationModel user)
+        {
+            UserAuthenticationModel userRegistered = UserCore.GetUserInfo(user.Email);          
+
+            if(userRegistered == null) return NotFound(user.Email);
+
+            if (userRegistered.Password == user.Password) {
+                return Ok(userRegistered);
+            }
+            
+            return BadRequest();
+        }
+
 
     }
 }

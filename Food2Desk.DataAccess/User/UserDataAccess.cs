@@ -37,5 +37,27 @@ namespace Food2Desk.DataAccess.User
 
             return user;
         }
+
+        public UserAuthenticationModel GetUserInfo(string email)
+        {
+            var userList = List();
+            return userList.FirstOrDefault(user => user.Email == email);
+        }
+
+        public List<UserAuthenticationModel> List()
+        {
+            var userList = new List<UserAuthenticationModel>()
+        {
+            new UserAuthenticationModel { Email = "rafaelmatos@gmail.com", Password = "LendarioGuardiaoDevDasSombras", UserId = Guid.NewGuid() },
+            new UserAuthenticationModel { Email = "jujugadotti@gmail.com", Password = "123", UserId = Guid.NewGuid() },
+            new UserAuthenticationModel { Email = "waneventura@gmail.com", Password = "321", UserId = Guid.NewGuid() },
+            new UserAuthenticationModel { Email = "copoplastico@gmail.com", Password = "777", UserId = Guid.NewGuid() },
+            new UserAuthenticationModel { Email = "vitoria@gmail.com", Password = "peitudas230", UserId = Guid.NewGuid() }
+        };
+
+            return userList;
+        }
     }
+
+    
 }
