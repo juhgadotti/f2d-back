@@ -17,6 +17,7 @@ namespace Food2Desk.Shared.Interfaces
         public ProductDTO Update(ProductDTO dto);
         public void Delete(ProductModel model);
         public List<ProductDTO> UpdateThenList(ProductDTO dto);
-        public List<String> ListCategories();
+
+        public List<String> CategoriesList();
     }
 }
