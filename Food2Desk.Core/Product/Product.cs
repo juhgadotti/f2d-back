@@ -54,7 +54,7 @@ namespace Food2Desk.Core
         public List<String> ListCategories()
         {
             var productList = List();
-            return productList.DistinctBy(pr => pr.Category).Select(ct => ct.Category).ToList();
+            return productList.DistinctBy(pr => pr.Category).Select(ct => ct.Category).ToList();            
         }
     }
 }
