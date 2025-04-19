@@ -28,7 +28,7 @@ namespace Food2Desk.Core
         }
 
         public ProductDTO Insert(ProductDTO dto)
-        {            
+        {
             var alreadyExist = ProductDA.List().Any(x => x.Name == dto.Name);
 
             if (alreadyExist) throw new Exception("Já existe um produto cadastrado com esse nome!");
@@ -51,11 +51,10 @@ namespace Food2Desk.Core
             return ProductDA.UpdateThenList(dto);
         }
 
-        public List<String> CategoriesList()
+        public List<String> ListCategories()
         {
             var productList = List();
-            var categories = productList.DistinctBy(pr => pr.Category).Select(ct => ct.Category).ToList();
-            categories.ForEach(categorieNumber => )
+            return productList.DistinctBy(pr => pr.Category).Select(ct => ct.Category).ToList();
         }
     }
 }
