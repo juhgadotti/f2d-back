@@ -16,6 +16,8 @@ namespace Food2Desk.Shared.Model
         public string? Category { get; set; }
         public int? Quantity { get; set; }
         public string? ImageUrl { get; set; }
+        public int Status { get; set; }
+
 
         public static ProductModel BuildModel(ProductDTO dto)
         {
@@ -26,7 +28,8 @@ namespace Food2Desk.Shared.Model
                 Description = dto.Description,
                 Price = dto.Price,
                 Category = dto.Category,
-                ImageUrl = dto.ImageUrl
+                ImageUrl = dto.ImageUrl,
+                Status = dto.Status
             };
         }
 
@@ -39,7 +42,8 @@ namespace Food2Desk.Shared.Model
                 Description = model.Description,
                 Price = model.Price,
                 Category = model.Category,
-                ImageUrl = model.ImageUrl
+                ImageUrl = model.ImageUrl,
+                Status = model.Status
             };
         }
     }

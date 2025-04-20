@@ -32,16 +32,22 @@ namespace Food2Desk.Controllers
 
         [HttpPost("")]
         public JsonResult Insert(ProductModel model) {
+            var alreadyExist = ProductCore.List().Find(prod => prod.Name == model.Name);
+            if (alreadyExist != null)
+            {
+                return new JsonResult(alreadyExist.Id);
+            }
             model.Id = Guid.NewGuid();
             ProductDTO dto = ProductModel.BuildDTO(model);
             var newDTO = ProductCore.Insert(dto);
             return new JsonResult(ProductModel.BuildModel(newDTO));
         }
 
-        [HttpPut("{id:Guid}")]
+        [HttpPut("")]
         public JsonResult Update(ProductModel model)
-        {
+        {            
             ProductDTO dto = ProductModel.BuildDTO(model);
+            ProductCore.Update(dto);
             return new JsonResult(model);
         }
 
@@ -58,7 +64,7 @@ namespace Food2Desk.Controllers
             return new JsonResult(categoriesList);
         }
 
-        [HttpPut("")] //test from front
+        [HttpPut("aa")] //test from front
         public JsonResult UpdateThenList(ProductModel model)
         {
             ProductDTO dto = ProductModel.BuildDTO(model);

@@ -38,6 +38,10 @@ namespace Food2Desk.Core
 
         public ProductDTO Update(ProductDTO dto)
         {
+            if(dto.Id == Guid.Empty)
+            {
+                dto.Id = List().Find(prod => prod.Name == dto.Name).Id;
+            }
             return ProductDA.Update(dto);
         }
 
