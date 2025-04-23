@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Food2Desk.DataAccess.Product
+namespace Food2Desk.Shared.Interfaces.Lunch
 {
-    public class LunchDataAccess
+    public interface ILunchCore
     {
+        public int List();
     }
 }

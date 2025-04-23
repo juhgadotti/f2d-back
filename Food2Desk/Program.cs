@@ -5,8 +5,11 @@ using Food2Desk.DataAccess.User;
 using Food2Desk.DataAccess.Product;
 using Food2Desk.DataAccess.Order;
 using Food2Desk.Shared.Interfaces.Product;
+using Food2Desk.DataAccess.Lunch;
 using Food2Desk.Shared.Interfaces.User;
 using Food2Desk.Shared.Interfaces.Order;
+using Food2Desk.Shared.Interfaces.Lunch;
+using Food2Desk.Core.Lunch;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,6 +29,8 @@ builder.Services.AddScoped<IProductCore, Product>();
 builder.Services.AddScoped<IProductDataAccess, ProductDataAccess>();
 builder.Services.AddScoped<IOrderDataAccess, OrderDataAccess>();
 builder.Services.AddScoped<IOrderCore, Order>();
+builder.Services.AddScoped<ILunchDataAccess, LunchDataAccess>();
+builder.Services.AddScoped<ILunchCore, Lunch>();
 builder.Services.AddScoped<IUserCore, User>();
 builder.Services.AddScoped<IUserDataAccess, UserDataAccess>();
 

@@ -1,4 +1,5 @@
 ﻿using Food2Desk.Shared.Interfaces;
+using Food2Desk.Shared.Interfaces.Lunch;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Food2Desk.Controllers
@@ -7,18 +8,18 @@ namespace Food2Desk.Controllers
     [Route("api/[controller]")]
     public class LunchController : ControllerBase
     {
-        public readonly IProductCore ProductCore; //aq vai ser lunch
+        public readonly ILunchCore LunchCore; //aq vai ser lunch
 
-        public LunchController(IProductCore productCore) //aq vai ser lunch
+        public LunchController(ILunchCore lunchCore) //aq vai ser lunch
         {
-            ProductCore = productCore; //aq vai ser lunch
+            LunchCore = lunchCore; //aq vai ser lunch
         }
 
         [HttpGet]
         public JsonResult LunchList()
         {
             var lunchList = LunchCore.List(); 
-            return new JsonResult();
+            return new JsonResult(lunchList);
         }
     }
 }
