@@ -60,5 +60,10 @@ namespace Food2Desk.Core
             var productList = List();
             return productList.DistinctBy(pr => pr.Category).Select(ct => ct.Category).ToList();            
         }
+
+        public List<ProductDTO> LunchList()
+        {
+            return List().Where(prod => prod.Category == "Lunch").ToList();
+        }
     }
 }
