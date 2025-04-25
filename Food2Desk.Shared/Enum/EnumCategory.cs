@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Food2Desk.Shared.Enum
 {
-    public enum EnumCategory
+    public class EnumCategory
     {
-        [Description("Bebida")]
-        Bebida = 1,
-
-        [Description("Salgado")]
-        Salgado = 2
+        public const string Almoço = "Almoço";
+        public const string Salgado = "Salgado";
+        public const string Bebida = "Bebida";
+        public const string Sobremesa = "Sobremesa";
+        public const string Snack = "Snack";            
     }
 }

@@ -3,6 +3,7 @@ using Food2Desk.Shared.DTOs;
 using Food2Desk.Shared.Interfaces.Product;
 using Food2Desk.Shared.Interfaces;
 using System.Collections.Generic;
+using Food2Desk.Shared.Enum;
 
 
 namespace Food2Desk.Core
@@ -63,7 +64,7 @@ namespace Food2Desk.Core
 
         public List<ProductDTO> LunchList()
         {
-            return List().Where(prod => prod.Category == "Lunch").ToList();
+            return List().Where(prod => prod.Category == EnumCategory.Almoço).ToList();
         }
     }
 }
