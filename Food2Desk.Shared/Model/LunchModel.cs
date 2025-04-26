@@ -11,7 +11,7 @@ namespace Food2Desk.Shared.Model
         public Guid Id { get; set; }
         public string WeekDay { get; set; }
         public int WeekDayId { get; set; }
-        public List<ProductModel> Lunchs { get; set; }///aaaaa
+        public List<ProductModel> Lunchs { get; set; }///aaaaabbbbbbb
 
     }
 }
