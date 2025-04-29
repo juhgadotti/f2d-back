@@ -71,5 +71,12 @@ namespace Food2Desk.Controllers
             List<ProductDTO> newListDTO = ProductCore.UpdateThenList(dto);            
             return new JsonResult(model);
         }
+
+        [HttpPut("item-status")]
+        public JsonResult ChangeProductStatus(Guid id)
+        {
+
+            return new JsonResult(id);
+        }
     }
 }
