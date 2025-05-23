@@ -5,11 +5,12 @@ using ConfigurationManager = Food2Desk.Shared.Utils.ConfigurationManager;
 
 namespace Food2Desk.DataAccess.Context 
 {
-    public class Food2deskContext(DbContextOptions <Food2deskContext> options) : DbContext(options)
+    public class Food2deskContext(DbContextOptions<Food2deskContext> options) : DbContext(options)
     {
         public virtual DbSet<UserDTO> User { get; set; } //faze pra todas as tabelaaaa
-
         public virtual DbSet<ProductDTO> Product { get; set; }
+        public virtual DbSet<OfficeDTO> Office { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {            
             if (!optionsBuilder.IsConfigured)
@@ -44,6 +45,23 @@ namespace Food2Desk.DataAccess.Context
                 entity.Property(x => x.WeekDay);
                 entity.Property(x => x.Category);
                 entity.Property(x => x.Status);
+            });
+
+            modelBuilder.Entity<OfficeDTO>(entity =>
+            {
+                entity.ToTable("Office");
+
+                entity.HasKey(x => x.Id);
+
+                entity.Property(x => x.Block);
+                entity.Property(x => x.Floor);
+                entity.Property(x => x.Number);
+
+                entity.HasOne(x => x.User)
+                    .WithMany(o => o.Offices)
+                    .HasForeignKey(x => x.UserId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
             });
         }
     }
