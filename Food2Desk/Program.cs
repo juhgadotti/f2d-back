@@ -4,12 +4,13 @@ using Food2Desk.Shared.Interfaces;
 using Food2Desk.DataAccess.User;
 using Food2Desk.DataAccess.Product;
 using Food2Desk.DataAccess.Order;
-using Food2Desk.Shared.Interfaces.Product;
+using Food2Desk.Shared.Interfaces;
 using Food2Desk.DataAccess.Lunch;
 using Food2Desk.Shared.Interfaces.User;
 using Food2Desk.Shared.Interfaces.Order;
 using Food2Desk.Shared.Interfaces.Lunch;
 using Food2Desk.Core.Lunch;
+using Food2Desk.Core.Base;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -34,6 +35,7 @@ builder.Services.AddScoped<ILunchCore, Lunch>();
 builder.Services.AddScoped<IUserCore, User>();
 builder.Services.AddScoped<IUserDataAccess, UserDataAccess>();
 
+ContextConfig.CreateContexts(builder.Configuration, builder.Services);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
