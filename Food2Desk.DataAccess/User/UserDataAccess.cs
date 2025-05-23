@@ -1,32 +1,28 @@
-﻿using Food2Desk.Shared.Interfaces.User;
+﻿using Food2Desk.DataAccess.Context;
+using Food2Desk.Shared.DTOs;
+using Food2Desk.Shared.Interfaces.User;
 using Food2Desk.Shared.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Food2Desk.DataAccess.User
 {
-    public class UserDataAccess : IUserDataAccess
+    public class UserDataAccess(Food2deskContext context) : IUserDataAccess 
     {
+        private readonly Food2deskContext DBContext = context;
+
         public UserModel Get()
         {
             OfficeModel office = new OfficeModel()
             {
-                OfficeId = Guid.Parse("A24C13F0-E264-4396-BCEF-69AA8BD76465"),
+                Id = Guid.Parse("A24C13F0-E264-4396-BCEF-69AA8BD76465"),
                 Floor = "11",
-                Number = "102",
-                Enterprise = "Numax",
-                EnterpriseId = Guid.NewGuid() //"A24C13F0-E264-4396-BCEF-69AA8BD76465"
+                Number = "102"
             };
             OfficeModel office2 = new OfficeModel()
             {
-                OfficeId = Guid.Parse("BAA00DD6-2EA4-4892-BC60-8662FA37FCF1"),
+                Id = Guid.Parse("BAA00DD6-2EA4-4892-BC60-8662FA37FCF1"),
                 Floor = "7",
-                Number = "13",
-                Enterprise = "Neymar",
-                EnterpriseId = Guid.NewGuid() //"A24C13F0-E264-4396-BCEF-69AA8BD76465"
+                Number = "13"
             };
             UserModel user = new UserModel()
             {
@@ -56,6 +52,16 @@ namespace Food2Desk.DataAccess.User
         };
 
             return userList;
+        }
+
+        public void Insert(UserDTO user)
+        {
+
+        }
+
+        public List<UserDTO> ListBanco()
+        {
+             return DBContext.Set<UserDTO>().ToList();
         }
     }
 

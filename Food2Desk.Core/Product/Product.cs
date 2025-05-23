@@ -1,49 +1,48 @@
 ﻿using Food2Desk.Shared.Model;
 using Food2Desk.Shared.DTOs;
-using Food2Desk.Shared.Interfaces.Product;
 using Food2Desk.Shared.Interfaces;
 using System.Collections.Generic;
 using Food2Desk.Shared.Enum;
+using Food2Desk.DataAccess.Context;
 
 
 namespace Food2Desk.Core
 {
 
-    public class Product : IProductCore 
+    public class Product(Food2deskContext context, IProductDataAccess product) : IProductCore
     {
-        private readonly IProductDataAccess ProductDA;
-
-        public Product(IProductDataAccess productDA)
-        {
-            ProductDA = productDA;
-        }
+        private readonly IProductDataAccess _productDA = product;
+        private readonly Food2deskContext _context = context;
 
         public List<ProductDTO> List()
         {
-            return ProductDA.List();
+            return _productDA.List();
         }
 
         public ProductDTO Get(Guid id)
         {
-            return ProductDA.Get(id);
+            return _productDA.GetById(id);
         }
 
         public ProductDTO Insert(ProductDTO dto)
         {
-            var alreadyExist = ProductDA.List().Any(x => x.Name == dto.Name);
+            var alreadyExist = _productDA.List().Any(x => x.Name == dto.Name);
 
             if (alreadyExist) throw new Exception("Já existe um produto cadastrado com esse nome!");
-            
-            return ProductDA.Insert(dto);
+
+            var newDTO = _productDA.Insert(dto);
+            _context.SaveChanges();
+
+            return newDTO;
         }
 
         public ProductDTO Update(ProductDTO dto)
         {
-            if(dto.Id == Guid.Empty)
+            if (dto.Id == Guid.Empty)
             {
                 dto.Id = List().Find(prod => prod.Name == dto.Name).Id;
             }
-            return ProductDA.Update(dto);
+            return _productDA.Update(dto);
         }
 
         public void Delete(ProductModel model)
@@ -53,13 +52,13 @@ namespace Food2Desk.Core
 
         public List<ProductDTO> UpdateThenList(ProductDTO dto)
         {
-            return ProductDA.UpdateThenList(dto);
+            return _productDA.UpdateThenList(dto);
         }
 
         public List<String> ListCategories()
         {
             var productList = List();
-            return productList.DistinctBy(pr => pr.Category).Select(ct => ct.Category).ToList();            
+            return productList.DistinctBy(pr => pr.Category).Select(ct => ct.Category).ToList();
         }
 
         public List<ProductDTO> LunchList()

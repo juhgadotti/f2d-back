@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Food2Desk.Shared.DTOs
 {
-    public class ProductDTO
+    public class ProductDTO : DTOBase
     {
-        public Guid Id { get; set; }
         public string? ImageUrl { get; set; }
         public string Name { get; set; }
         public string? Description { get; set; }
         public double Price {  get; set; }
+        public int? WeekDay { get; set; }
         public string? Category { get; set; }
         public int Status { get; set; }
     }

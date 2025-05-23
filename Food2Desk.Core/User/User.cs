@@ -1,4 +1,5 @@
-﻿using Food2Desk.Shared.Interfaces.User;
+﻿using Food2Desk.Shared.DTOs;
+using Food2Desk.Shared.Interfaces.User;
 using Food2Desk.Shared.Model;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -19,9 +20,13 @@ namespace Food2Desk.Core
         }
         public UserModel Get()
         {
-            UserModel user = UserDA.Get();
+            return UserDA.Get();
+            
+        }
 
-            return user;
+        public List<UserDTO> ListBanco()
+        {
+            return UserDA.ListBanco();
         }
 
         public UserAuthenticationModel GetUserInfo(string email)

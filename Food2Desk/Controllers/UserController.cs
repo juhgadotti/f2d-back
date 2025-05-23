@@ -20,7 +20,15 @@ namespace Food2Desk.Controllers
         [HttpGet("")]
         public JsonResult Get()
         {
-            UserModel user = UserCore.Get();
+            var user = UserCore.Get();
+
+            return new JsonResult(user);
+        }
+
+        [HttpGet("aaa")]
+        public JsonResult ListBanco()
+        {
+            var user = UserCore.ListBanco();
 
             return new JsonResult(user);
         }

@@ -1,6 +1,6 @@
 ﻿using Food2Desk.Shared.DTOs;
 using Food2Desk.Shared.Interfaces.Order;
-using Food2Desk.Shared.Interfaces.Product;
+using Food2Desk.Shared.Interfaces;
 using Food2Desk.Shared.Model;
 using System;
 using System.Collections.Generic;
@@ -28,7 +28,7 @@ namespace Food2Desk.Core.Order
         public List<OrderDTO> List()
         {
             var list = OrderDA.List();
-            list.ForEach(p => p.TotalCharge = p.Cart.Sum(u => u.Quantity * u.Price));
+            list.ForEach(p => Math.Round(p.TotalCharge = p.Cart.Sum(u => u.Quantity * (decimal)u.Price), 2));
 
             return list;
         }

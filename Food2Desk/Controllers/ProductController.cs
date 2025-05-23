@@ -31,7 +31,7 @@ namespace Food2Desk.Controllers
         }
 
         [HttpPost("")]
-        public JsonResult Insert(ProductModel model) {
+        public JsonResult Insert(ProductModel model) {                       
             var alreadyExist = ProductCore.List().Find(prod => prod.Name == model.Name);
             if (alreadyExist != null)
             {

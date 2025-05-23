@@ -9,7 +9,7 @@ namespace Food2Desk.Shared.Model
 {
     public class ProductModel
     {
-        public Guid Id { get; set; } 
+        public Guid? Id { get; set; } 
         public string Name { get; set; }
         public string? Description { get; set; }
         public double Price { get; set; }
@@ -18,6 +18,7 @@ namespace Food2Desk.Shared.Model
         public string? ImageUrl { get; set; }
         public int Status { get; set; }
 
+        public int? WeekDay { get; set; }
 
         public static ProductModel BuildModel(ProductDTO dto)
         {
@@ -27,6 +28,7 @@ namespace Food2Desk.Shared.Model
                 Name = dto.Name,
                 Description = dto.Description,
                 Price = dto.Price,
+                WeekDay = dto.WeekDay,
                 Category = dto.Category,
                 ImageUrl = dto.ImageUrl,
                 Status = dto.Status
@@ -37,10 +39,11 @@ namespace Food2Desk.Shared.Model
         {
             return new ProductDTO()
             {
-                Id = model.Id,
+                Id = model.Id ?? Guid.NewGuid(),
                 Name = model.Name,
                 Description = model.Description,
                 Price = model.Price,
+                WeekDay = model.WeekDay,
                 Category = model.Category,
                 ImageUrl = model.ImageUrl,
                 Status = model.Status
