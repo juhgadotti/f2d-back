@@ -4,9 +4,9 @@ using Food2Desk.Shared.Interfaces;
 using Food2Desk.Shared.Model;
 
 
-namespace Food2Desk.DataAccess.User
+namespace Food2Desk.DataAccess
 {
-    public class UserDataAccess(Food2deskContext context) : IUserDataAccess 
+    public class UserDataAccess(Food2deskContext context) : BaseRepository<UserDTO>(context), IUserDataAccess
     {
         private readonly Food2deskContext DBContext = context;
 
@@ -34,36 +34,28 @@ namespace Food2Desk.DataAccess.User
             return user;
         }
 
-        public UserAuthenticationModel GetUserInfo(string email)
-        {
-            var userList = List();
-            return userList.FirstOrDefault(user => user.Email == email);
-        }
+        //public UserAuthModel GetUserInfo(string email)
+        //{
+        //    return DBContext.Set<UserAuthDTO>().FirstOrDefault(e => e.Email == email);            
+        //}
 
-        public List<UserAuthenticationModel> List()
+        public List<UserAuthModel> List()
         {
-            var userList = new List<UserAuthenticationModel>()
+            var userList = new List<UserAuthModel>()
         {
-            new UserAuthenticationModel { Email = "rafaelmatos@gmail.com", Password = "LendarioGuardiaoDevDasSombras", UserId = Guid.NewGuid() },
-            new UserAuthenticationModel { Email = "jujugadotti@gmail.com", Password = "123", UserId = Guid.NewGuid() },
-            new UserAuthenticationModel { Email = "waneventura@gmail.com", Password = "321", UserId = Guid.NewGuid() },
-            new UserAuthenticationModel { Email = "copoplastico@gmail.com", Password = "777", UserId = Guid.NewGuid() },
-            new UserAuthenticationModel { Email = "vitoria@gmail.com", Password = "peitudas230", UserId = Guid.NewGuid() }
+            new UserAuthModel { Email = "rafaelmatos@gmail.com", Password = "LendarioGuardiaoDevDasSombras", UserId = Guid.NewGuid() },
+            new UserAuthModel { Email = "jujugadotti@gmail.com", Password = "123", UserId = Guid.NewGuid() },
+            new UserAuthModel { Email = "waneventura@gmail.com", Password = "321", UserId = Guid.NewGuid() },
+            new UserAuthModel { Email = "copoplastico@gmail.com", Password = "777", UserId = Guid.NewGuid() },
+            new UserAuthModel { Email = "vitoria@gmail.com", Password = "peitudas230", UserId = Guid.NewGuid() }
         };
 
             return userList;
-        }
-
-        public void Insert(UserDTO user)
-        {
-
         }
 
         public List<UserDTO> ListBanco()
         {
              return DBContext.Set<UserDTO>().ToList();
         }
-    }
-
-    
+    }    
 }
