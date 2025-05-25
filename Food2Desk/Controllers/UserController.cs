@@ -2,7 +2,7 @@
 using Food2Desk.Shared.Model;
 using Food2Desk.Shared.Interfaces;
 using Food2Desk.Shared.DTOs;
-using Food2Desk.Shared.Interfaces.User;
+using Food2Desk.Shared.Interfaces;
 
 namespace Food2Desk.Controllers
 {
@@ -34,27 +34,21 @@ namespace Food2Desk.Controllers
         }
 
         [HttpPost("")]
-        public JsonResult Insert(UserModel user)
+        public JsonResult Insert(UserRegisterModel user)
         {
-            var a = user;
+            UserCore.Insert(user);
 
             return new JsonResult(user);
         }
 
-        [HttpGet("authentication")]
-        public IActionResult Authentication(UserAuthenticationModel user)
+        [HttpPut("auth")]
+        public IActionResult Authentication([FromBody] UserAuthModel user)
         {
-            UserAuthenticationModel userRegistered = UserCore.GetUserInfo(user.Email);          
+            var userRegistered = UserCore.Authentication(user);
 
-            if(userRegistered == null) return NotFound(user.Email);
+            if (userRegistered == null) return NotFound(user.Email);
 
-            if (userRegistered.Password == user.Password) {
-                return Ok(userRegistered);
-            }
-            
-            return BadRequest();
+            return Ok(userRegistered);
         }
-
-
     }
 }

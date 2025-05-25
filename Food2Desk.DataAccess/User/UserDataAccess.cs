@@ -1,6 +1,6 @@
 ﻿using Food2Desk.DataAccess.Context;
 using Food2Desk.Shared.DTOs;
-using Food2Desk.Shared.Interfaces.User;
+using Food2Desk.Shared.Interfaces;
 using Food2Desk.Shared.Model;
 
 
