@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Food2Desk.Shared.Model
 {
-    public class UserAuthenticationModel
+    public class UserAuthModel
     {
-        public Guid UserId { get; set; }
+        public Guid? UserId { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
+        public bool IsLogged { get; set; }
     }
 }
