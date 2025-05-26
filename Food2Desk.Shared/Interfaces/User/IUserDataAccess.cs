@@ -8,14 +8,12 @@ using System.Threading.Tasks;
 
 namespace Food2Desk.Shared.Interfaces
 {
-    public interface IUserDataAccess
+    public interface IUserDataAccess : IBaseRepository<UserDTO>
     {
         // public UserModel Get();
         public UserModel Get();
         public List<UserDTO> ListBanco();
-
-
-        public UserAuthenticationModel GetUserInfo(string email);
-        public List<UserAuthenticationModel> List();
+        //public UserAuthModel GetUserInfo(string email);
+        public List<UserAuthModel> List();
     }
 }
