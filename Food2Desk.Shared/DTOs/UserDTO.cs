@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Food2Desk.Shared.DTOs
 {
-    public class UserDTO
+    public class UserDTO : DTOBase
     {
         public Guid Id { get; set; }
         public String Name { get; set; }

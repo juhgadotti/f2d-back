@@ -11,8 +11,7 @@ namespace Food2Desk.Shared.DTOs
         public String Floor { get; set; }
         public String Number { get; set; }
         public String? Block { get; set; }
-
         public Guid UserId { get; set; }
-        public UserDTO User { get; set; } = null!;
+        public UserDTO? User { get; set; } = null;
     }
 }
