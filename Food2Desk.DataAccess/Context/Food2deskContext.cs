@@ -10,6 +10,7 @@ namespace Food2Desk.DataAccess.Context
         public virtual DbSet<UserDTO> User { get; set; } //faze pra todas as tabelaaaa
         public virtual DbSet<ProductDTO> Product { get; set; }
         public virtual DbSet<OfficeDTO> Office { get; set; }
+        public virtual DbSet<UserAuthDTO> UserAuth { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {            
@@ -49,8 +50,6 @@ namespace Food2Desk.DataAccess.Context
 
             modelBuilder.Entity<OfficeDTO>(entity =>
             {
-                entity.ToTable("Office");
-
                 entity.HasKey(x => x.Id);
 
                 entity.Property(x => x.Block);
@@ -63,6 +62,15 @@ namespace Food2Desk.DataAccess.Context
                     .OnDelete(DeleteBehavior.Cascade);
 
             });
+
+            modelBuilder.Entity<UserAuthDTO>(entity =>
+            {
+                entity.HasKey(x => x.Id);
+                entity.Property(x => x.Email);
+                entity.Property(x => x.Password);
+                entity.Property(x => x.IsLogged); 
+                entity.Property(x => x.UserId); 
+            });                            
         }
     }
 }
