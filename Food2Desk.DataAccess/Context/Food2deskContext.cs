@@ -70,7 +70,15 @@ namespace Food2Desk.DataAccess.Context
                 entity.Property(x => x.Password);
                 entity.Property(x => x.IsLogged); 
                 entity.Property(x => x.UserId); 
-            });                            
+            });
+
+            modelBuilder.Entity<OfficeDTO>(entity =>
+            {
+                entity.HasKey(x => x.Id);
+                entity.Property(x => x.Floor);
+                entity.Property(x => x.Block);
+                entity.Property(x => x.Number);
+            });
         }
     }
 }
