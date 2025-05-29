@@ -32,6 +32,7 @@ builder.Services.AddScoped<ILunchDataAccess, LunchDataAccess>();
 builder.Services.AddScoped<ILunchCore, Lunch>();
 builder.Services.AddScoped<IUserCore, User>();
 builder.Services.AddScoped<IUserDataAccess, UserDataAccess>();
+builder.Services.AddScoped<IOfficeDataAccess, OfficeDataAccess>();
 builder.Services.AddScoped<IUserAuthDataAccess, UserAuthDataAccess>();
 
 ContextConfig.CreateContexts(builder.Configuration, builder.Services);
