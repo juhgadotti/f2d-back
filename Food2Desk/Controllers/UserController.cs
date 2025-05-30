@@ -34,11 +34,11 @@ namespace Food2Desk.Controllers
         }
 
         [HttpPost("")]
-        public JsonResult Insert(UserRegisterModel user)
+        public JsonResult Insert([FromBody] UserRegisterModel user)
         {
-            UserCore.Insert(user);
+            var newUser = UserCore.Insert(user);
 
-            return new JsonResult(user);
+            return new JsonResult(newUser);
         }
 
         [HttpPut("auth")]
@@ -49,6 +49,13 @@ namespace Food2Desk.Controllers
             if (userRegistered == null) return NotFound(user.Email);
 
             return Ok(userRegistered);
+        }
+
+        [HttpPost("office")]
+        public IActionResult InsertOffice([FromBody] OfficeModel office)
+        {
+            UserCore.InsertOffice(office);
+            return Ok();
         }
     }
 }
