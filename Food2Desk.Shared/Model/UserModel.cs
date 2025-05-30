@@ -18,19 +18,19 @@ namespace Food2Desk.Shared.Model
         {
             return new UserModel
             {
-                //Id = dto.Id,
-                //Name = dto.Name,
-                //Offices = dto.Offices?.Select(x => x.OfficeModel.BuildModel()).ToList()
+                Id = dto.Id,
+                Name = dto.Name,
+                Offices = dto.Offices?.Select(x => OfficeModel.BuildModel(x)).ToList()
             };
         }
         public static UserDTO BuildDTO(UserModel model)
         {
             return new UserDTO
             {
-                //Id = model.Id,
-                //Name = model.Name,
-                //Phone = model.Phone,
-                //Offices = model.Offices.ForEach(o =>  OfficeModel.BuildModel(o))
+                Id = model.Id,
+                Name = model.Name,
+                Phone = model.Phone,
+                Offices = model.Offices?.Select(o => OfficeModel.BuildDTO(o)).ToList()
 
             };
         }

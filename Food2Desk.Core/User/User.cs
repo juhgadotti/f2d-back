@@ -11,11 +11,12 @@ using System.Threading.Tasks;
 
 namespace Food2Desk.Core
 {
-    public class User(Food2deskContext context, IUserDataAccess userDA, IUserAuthDataAccess userAuthDA) : IUserCore
+    public class User(Food2deskContext context, IUserDataAccess userDA, IUserAuthDataAccess userAuthDA, IOfficeDataAccess officeDA) : IUserCore
     {        
 
         private readonly IUserDataAccess UserDA = userDA;
         private readonly IUserAuthDataAccess _userAuthDA = userAuthDA;
+        private readonly IOfficeDataAccess _officeDA = officeDA;
         private readonly Food2deskContext _context = context;
 
 
@@ -25,7 +26,7 @@ namespace Food2Desk.Core
             
         }
 
-        public void Insert(UserRegisterModel user)
+        public UserModel Insert(UserRegisterModel user)
         {
             var newUser = new UserDTO()
             {
@@ -49,6 +50,8 @@ namespace Food2Desk.Core
             _userAuthDA.Insert(userAuth);
 
             _context.SaveChanges();
+
+            return UserModel.BuildModel(newUser);
         }
 
         public List<UserDTO> ListBanco()
@@ -66,6 +69,19 @@ namespace Food2Desk.Core
 
             }
             return userRegistered;
+        }
+
+        public OfficeDTO InsertOffice(OfficeModel office)
+        {
+            office.UserId = office.Id;
+            office.Id = Guid.NewGuid();
+
+            var newOffice = OfficeModel.BuildDTO(office);
+            _officeDA.Insert(newOffice);
+
+            _context.SaveChanges();
+
+            return newOffice;
         }
 
     }

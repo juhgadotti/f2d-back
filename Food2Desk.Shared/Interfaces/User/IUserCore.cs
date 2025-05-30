@@ -11,9 +11,10 @@ namespace Food2Desk.Shared.Interfaces
     public interface IUserCore
     {
         public UserModel Get();
-        public void Insert(UserRegisterModel user);
+        public UserModel Insert(UserRegisterModel user);
         public List<UserDTO> ListBanco();
 
         public UserAuthDTO Authentication(UserAuthModel user);
+        public OfficeDTO InsertOffice(OfficeModel office);
     }
 }
