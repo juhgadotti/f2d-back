@@ -15,6 +15,42 @@ namespace Food2Desk.Controllers
             OrderCore = order;
         }
 
+        #region funciona
+        [HttpPost("")]
+        public JsonResult Insert(OrderRequestModel model)
+        {
+            model.Id = Guid.NewGuid();
+            if (model.IsLunch && !model.ToDelivery)
+            {
+                model.Office = new OfficeModel()
+                {
+                    Id = Guid.Parse("bbfce7be-8317-40d0-b00d-99785790ebf2"),
+                    Block = "A",
+                    Number = "1",
+                    Floor = "1"
+                };
+            }
+            var dto = OrderRequestModel.BuildOrderDTO(model);
+            return new JsonResult(OrderCore.Insert(dto));
+        }
+
+        [HttpGet("{id}")]
+        public JsonResult ListUserOrder(Guid id)
+        {
+            var list = OrderCore.ListUserOrder(id).OrderByDescending(c => c.Code);
+            return new JsonResult(list);
+        }
+
+        [HttpPost("lunch")]
+        public JsonResult OrderLunch()
+        {
+
+            return new JsonResult("socorro");
+        }
+
+
+        #endregion
+
         [HttpGet("get")]
         public JsonResult Get(Guid id)            
         {
