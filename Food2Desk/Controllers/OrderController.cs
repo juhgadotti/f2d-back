@@ -1,7 +1,9 @@
-﻿using Food2Desk.Core.Order;
+﻿using Food2Desk.Core;
+using Food2Desk.Shared.DTOs;
 using Food2Desk.Shared.Interfaces.Order;
 using Food2Desk.Shared.Model;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace Food2Desk.Controllers
 {
