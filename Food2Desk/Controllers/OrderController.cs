@@ -64,7 +64,7 @@ namespace Food2Desk.Controllers
         [HttpGet]
         public JsonResult List()
         {
-            var listDTO = OrderCore.List();
+            var listDTO = OrderCore.List().OrderByDescending(c => c.Code);
 
             return new JsonResult(listDTO.Select(OrderModel.BuildModel).ToList());
         }
