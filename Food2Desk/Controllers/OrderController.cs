@@ -79,7 +79,9 @@ namespace Food2Desk.Controllers
         [HttpPut("status")] // /{id:Guid}
         public IActionResult UpdateOrderStatus([FromBody] OrderModel order)
         {
-            OrderCore.UpdateStatus(order.Id, order.Status);
+            var dto = OrderModel.BuildDTO(order);
+            dto.Cart = [];
+            OrderCore.Update(dto);
             return Ok();
         }
 
