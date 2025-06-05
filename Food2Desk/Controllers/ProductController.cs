@@ -22,7 +22,7 @@ namespace Food2Desk.Controllers
         [HttpGet("")]
         public JsonResult List()
         {
-            List<ProductDTO> listDTO = ProductCore.List();
+            List<ProductDTO> listDTO = ProductCore.ListWithoutLunch();
 
             return new JsonResult(listDTO.Select(ProductModel.BuildModel));
         }
