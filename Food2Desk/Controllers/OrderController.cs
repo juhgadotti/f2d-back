@@ -54,7 +54,7 @@ namespace Food2Desk.Controllers
         #endregion
 
         [HttpGet("get")]
-        public JsonResult Get(Guid id)            
+        public JsonResult Get(Guid id)
         {
             var orderDTO = OrderCore.Get(id);
 
