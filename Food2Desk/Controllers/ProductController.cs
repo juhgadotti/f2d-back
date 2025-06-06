@@ -34,6 +34,35 @@ namespace Food2Desk.Controllers
             return new JsonResult(ProductModel.BuildModel(dto));
         }
 
+        [HttpPost("lunch")]
+        public JsonResult InsertLunch([FromBody] ProductModel model)
+        {
+            var newLunch = ProductModel.BuildDTO(model);
+            var lunch = ProductCore.Insert(newLunch);
+            return new JsonResult(lunch);
+        }
+
+        [HttpGet("lunch")]
+        public JsonResult LunchList()
+        {
+            var list = ProductCore.LunchList();
+            return new JsonResult(list);
+        }
+
+        [HttpGet("lunch/{weekDay}")]
+        public JsonResult LunchDayList(int weekDay)
+        {
+            var list = ProductCore.LunchList().Where(l => l.WeekDay == weekDay);
+            return new JsonResult(list);
+        }
+
+        [HttpDelete("lunch/{id}")]
+        public IActionResult DeleteLunch(Guid id)
+        {
+            ProductCore.Delete(id);
+            return Ok();
+        }
+
         [HttpPost("")]
         public JsonResult Insert(ProductModel model) {                       
             var alreadyExist = ProductCore.List().Find(prod => prod.Name == model.Name);
