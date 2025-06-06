@@ -28,7 +28,8 @@ namespace Food2Desk.Controllers
         }
 
         [HttpGet("{id:Guid}")]
-        public JsonResult Get(Guid id) {
+        public JsonResult Get(Guid id)
+        {
             ProductDTO dto = ProductCore.Get(id);
             return new JsonResult(ProductModel.BuildModel(dto));
         }
