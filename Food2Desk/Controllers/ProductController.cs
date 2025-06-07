@@ -117,7 +117,7 @@ namespace Food2Desk.Controllers
             return new JsonResult(model);
         }
 
-        [HttpPut("item-status")]
+        [HttpPut("status/{id}")]
         public JsonResult ChangeProductStatus(Guid id)
         {
 
