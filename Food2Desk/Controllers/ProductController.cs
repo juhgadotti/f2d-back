@@ -87,6 +87,10 @@ namespace Food2Desk.Controllers
         [HttpPut("")]
         public JsonResult Update(ProductModel model)
         {            
+            if (model.Id == Guid.Empty || model.Id == null)
+            {
+                model.Id = ProductCore.ListWithoutLunch().Find(prod => prod.Name == model.Name).Id;
+            }
             ProductDTO dto = ProductModel.BuildDTO(model);
             ProductCore.Update(dto);
             return new JsonResult(model);
