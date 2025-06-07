@@ -120,6 +120,9 @@ namespace Food2Desk.Controllers
         [HttpPut("status/{id}")]
         public JsonResult ChangeProductStatus(Guid id)
         {
+            ProductCore.ChangeProductStatus(id);
+            return new JsonResult(id);
+        }
 
             return new JsonResult(id);
         }
