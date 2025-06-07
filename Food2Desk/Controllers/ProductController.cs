@@ -64,12 +64,20 @@ namespace Food2Desk.Controllers
         }
 
         [HttpPost("")]
-        public JsonResult Insert(ProductModel model) {                       
-            var alreadyExist = ProductCore.List().Find(prod => prod.Name == model.Name);
+        public async Task<IActionResult> Insert([FromBody] ProductModel model)
+        {
+            var alreadyExist = ProductCore.ListWithoutLunch().Find(prod => prod.Name == model.Name);
             if (alreadyExist != null)
             {
                 return new JsonResult(alreadyExist.Id);
             }
+
+            //if (image != null && image.Length > 0)
+            //{                
+            //    var imageUrl = await SupabaseService.UploadImage(image);
+            //    model.ImageUrl = imageUrl;
+            //}
+
             model.Id = Guid.NewGuid();
             ProductDTO dto = ProductModel.BuildDTO(model);
             var newDTO = ProductCore.Insert(dto);
