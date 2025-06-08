@@ -124,7 +124,10 @@ namespace Food2Desk.Controllers
             return new JsonResult(id);
         }
 
-            return new JsonResult(id);
+        [HttpDelete("{id}")]
+        public void Delete(Guid id)
+        {
+            ProductCore.Delete(id);
         }
     }
 }
