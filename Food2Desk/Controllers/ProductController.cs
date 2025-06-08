@@ -86,12 +86,12 @@ namespace Food2Desk.Controllers
 
         [HttpPut("")]
         public JsonResult Update(ProductModel model)
-        {            
+        {
             if (model.Id == Guid.Empty || model.Id == null)
             {
                 model.Id = ProductCore.ListWithoutLunch().Find(prod => prod.Name == model.Name).Id;
             }
-            ProductDTO dto = ProductModel.BuildDTO(model);
+            ProductDTO dto = ProductModel.BuildDTO(model);            
             ProductCore.Update(dto);
             return new JsonResult(model);
         }
@@ -105,7 +105,7 @@ namespace Food2Desk.Controllers
         [HttpGet("categories")]
         public JsonResult GetCategories()
         {
-            var categoriesList = ProductCore.ListCategories();            
+            var categoriesList = ProductCore.ListCategories();
             return new JsonResult(categoriesList);
         }
 
@@ -113,7 +113,7 @@ namespace Food2Desk.Controllers
         public JsonResult UpdateThenList(ProductModel model)
         {
             ProductDTO dto = ProductModel.BuildDTO(model);
-            List<ProductDTO> newListDTO = ProductCore.UpdateThenList(dto);            
+            List<ProductDTO> newListDTO = ProductCore.UpdateThenList(dto);
             return new JsonResult(model);
         }
 
