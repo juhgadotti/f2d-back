@@ -17,7 +17,7 @@ namespace Food2Desk.Controllers
             UserCore = userCore;
         }
 
-        [HttpGet("")]
+        [HttpGet("{id}")]
         public JsonResult Get()
         {
             var user = UserCore.Get();
