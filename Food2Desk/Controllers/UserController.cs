@@ -58,10 +58,10 @@ namespace Food2Desk.Controllers
         }
 
         [HttpPost("office")]
-        public IActionResult InsertOffice([FromBody] OfficeModel office)
+        public JsonResult InsertOffice([FromBody] OfficeModel office)
         {
-            UserCore.InsertOffice(office);
-            return Ok();
+            var newOffice = UserCore.InsertNewOffice(office);
+            return new JsonResult(newOffice);
         }
     }
 }
