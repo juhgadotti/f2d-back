@@ -3,6 +3,7 @@ using Food2Desk.Shared.DTOs;
 using Food2Desk.Shared.Interfaces;
 using Food2Desk.Shared.Model;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 namespace Food2Desk.Core
 {
     public class User(Food2deskContext context, IUserDataAccess userDA, IUserAuthDataAccess userAuthDA, IOfficeDataAccess officeDA) : IUserCore
-    {        
+    {
 
         private readonly IUserDataAccess UserDA = userDA;
         private readonly IUserAuthDataAccess _userAuthDA = userAuthDA;
@@ -20,10 +21,12 @@ namespace Food2Desk.Core
         private readonly Food2deskContext _context = context;
 
 
-        public UserModel Get()
+        public UserModel Get(Guid id)
         {
-            return UserDA.Get();
-            
+            var path = new Path<OfficeDTO>();
+            var user = UserDA.GetPath(id, u => u.Offices);
+            return UserModel.BuildModel(user);
+
         }
 
         public UserModel Insert(UserRegisterModel user)
@@ -38,6 +41,8 @@ namespace Food2Desk.Core
             };
 
             UserDA.Insert(newUser);
+
+            _context.SaveChanges();
 
             var userAuth = new UserAuthDTO()
             {
@@ -63,7 +68,7 @@ namespace Food2Desk.Core
         {
             var userRegistered = _userAuthDA.GetUserByEmail(user.Email);
 
-            if(userRegistered.Password != user.Password)
+            if (userRegistered.Password != user.Password)
             {
                 throw new Exception("Senha errada >:(");
 
@@ -77,11 +82,20 @@ namespace Food2Desk.Core
             office.Id = Guid.NewGuid();
 
             var newOffice = OfficeModel.BuildDTO(office);
+            newOffice.UserId = (Guid)office.UserId;
             _officeDA.Insert(newOffice);
 
             _context.SaveChanges();
 
             return newOffice;
+        }
+
+        public OfficeModel InsertNewOffice(OfficeModel office)
+        {
+            var officeDTO = OfficeModel.BuildDTO(office);
+            var newOffice = _officeDA.Insert(officeDTO);
+            _context.SaveChanges();
+            return OfficeModel.BuildModel(newOffice);
         }
 
     }

@@ -10,7 +10,7 @@ namespace Food2Desk.Shared.Interfaces
     public interface IProductDataAccess : IBaseRepository<ProductDTO>
     {
         public List<ProductDTO> List();
-        public List<ProductDTO> mockedList();
+        //public List<ProductDTO> mockedList();
 
         public List<ProductDTO> UpdateThenList(ProductDTO dto);
     }

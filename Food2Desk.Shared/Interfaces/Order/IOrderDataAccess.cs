@@ -8,13 +8,11 @@ using System.Threading.Tasks;
 
 namespace Food2Desk.Shared.Interfaces.Order
 {
-    public interface IOrderDataAccess
+    public interface IOrderDataAccess : IBaseRepository<OrderDTO>
     {
         public OrderDTO Get(Guid id);
-        public OrderDTO Update(OrderDTO model);
+        //public List<OrderDTO> ListMocked();
+        //public OrderDTO BuildOrder(Guid id);
         public List<OrderDTO> List();
-        public OrderDTO Insert(OrderDTO model);
-
-        public OrderDTO BuildOrder(Guid id);
     }
 }

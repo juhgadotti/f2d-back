@@ -30,6 +30,7 @@ namespace Food2Desk.Shared.Model
                 Price = dto.Price,
                 WeekDay = dto.WeekDay,
                 Category = dto.Category,
+                Quantity = dto.Quantity,
                 ImageUrl = dto.ImageUrl,
                 Status = dto.Status
             };
@@ -45,6 +46,7 @@ namespace Food2Desk.Shared.Model
                 Price = model.Price,
                 WeekDay = model.WeekDay,
                 Category = model.Category,
+                Quantity = model.Quantity,
                 ImageUrl = model.ImageUrl,
                 Status = model.Status
             };

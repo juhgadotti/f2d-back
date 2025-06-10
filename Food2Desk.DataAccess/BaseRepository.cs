@@ -1,9 +1,11 @@
 ﻿using Food2Desk.DataAccess.Context;
 using Food2Desk.Shared.DTOs;
 using Food2Desk.Shared.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +21,20 @@ namespace Food2Desk.DataAccess
         public virtual TModel GetById(Guid id, Path<TModel> path = null)
         {
             var item = Query(path).Include(path).FirstOrDefault(i => i.Id == id);
+
+            return item ?? throw new Exception($"Item com id {id} não encontrado.");
+        }
+
+        public virtual TModel GetPath(Guid id, Expression<Func<TModel, object>> path = null)
+        {
+            var query = DbContext.Set<TModel>().AsQueryable();
+
+            if (path != null)
+            {
+                query = query.Include(path);
+            }
+
+            var item = query.FirstOrDefault(i => i.Id == id);
 
             return item ?? throw new Exception($"Item com id {id} não encontrado.");
         }

@@ -10,13 +10,13 @@ namespace Food2Desk.Shared.Model
     public class OrderModel
     {
         public Guid Id { get; set; }
-        public Int32 Code {  get; set; }
+        public Int32 Code { get; set; }
         public Guid UserId { get; set; }
         public string? UserName { get; set; }
         public decimal TotalCharge { get; set; } = 0;
         public bool ToDelivery { get; set; }
-        public bool isLunch { get; set; }
-        public Int32 Status { get; set; } 
+        public bool IsLunch { get; set; }
+        public Int32 Status { get; set; }
         public OfficeModel Office { get; set; }
         public List<ProductCartModel> Cart { get; set; }
 
@@ -31,6 +31,7 @@ namespace Food2Desk.Shared.Model
                 UserName = dto.UserName,
                 TotalCharge = dto.TotalCharge,
                 ToDelivery = dto.ToDelivery,
+                IsLunch = dto.IsLunch,
                 Status = dto.Status,
                 Office = OfficeModel.BuildModel(dto.Office),
                 Cart = dto.Cart.Select(ProductCartModel.BuildCartModel).ToList()
@@ -47,6 +48,7 @@ namespace Food2Desk.Shared.Model
                 UserName = model.UserName,
                 TotalCharge = model.TotalCharge,
                 ToDelivery = model.ToDelivery,
+                IsLunch = model.IsLunch,
                 Status = model.Status,
                 Office = OfficeModel.BuildDTO(model.Office),
                 Cart = model.Cart.Select(ProductCartModel.BuildCartDTO).ToList()
@@ -56,18 +58,18 @@ namespace Food2Desk.Shared.Model
 
     public class ProductCartModel
     {
-        public Guid ProductId { get; set; }
+        public Guid OrderId { get; set; }
         public Int32 Quantity { get; set; }
         public Double Price { get; set; }
         public String Name { get; set; }
 
         public static ProductCartDTO BuildCartDTO(ProductCartModel cartModel)
         {
-            return new ProductCartDTO { ProductId = cartModel.ProductId, Quantity = cartModel.Quantity, Price = cartModel.Price, Name = cartModel.Name };
+            return new ProductCartDTO { OrderId = cartModel.OrderId, Quantity = cartModel.Quantity, Price = cartModel.Price, Name = cartModel.Name };
         }
         public static ProductCartModel BuildCartModel(ProductCartDTO cartDTO)
         {
-            return new ProductCartModel { ProductId = cartDTO.ProductId, Quantity = cartDTO.Quantity, Price = cartDTO.Price, Name = cartDTO.Name };
+            return new ProductCartModel { OrderId = cartDTO.OrderId, Quantity = cartDTO.Quantity, Price = cartDTO.Price, Name = cartDTO.Name };
         }
     }
 }

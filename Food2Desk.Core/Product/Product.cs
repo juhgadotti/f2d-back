@@ -14,9 +14,9 @@ namespace Food2Desk.Core
         private readonly IProductDataAccess _productDA = product;
         private readonly Food2deskContext _context = context;
 
-        public List<ProductDTO> List()
+        public List<ProductDTO> ListWithoutLunch()
         {
-            return _productDA.List();
+            return _productDA.List().Where(x => x.Category != "Almoço").ToList();
         }
 
         public ProductDTO Get(Guid id)
@@ -28,7 +28,7 @@ namespace Food2Desk.Core
         {
             var alreadyExist = _productDA.List().Any(x => x.Name == dto.Name);
 
-            if (alreadyExist) throw new Exception("Já existe um produto cadastrado com esse nome!");
+            if (alreadyExist && dto.Category != "Almoço") throw new Exception("Já existe um produto cadastrado com esse nome!");
 
             var newDTO = _productDA.Insert(dto);
             _context.SaveChanges();
@@ -37,17 +37,17 @@ namespace Food2Desk.Core
         }
 
         public ProductDTO Update(ProductDTO dto)
-        {
-            if (dto.Id == Guid.Empty)
-            {
-                dto.Id = List().Find(prod => prod.Name == dto.Name).Id;
-            }
-            return _productDA.Update(dto);
+        {            
+            var newDto = _productDA.Update(dto);
+            _context.SaveChanges();
+            return newDto;
         }
 
-        public void Delete(ProductModel model)
+        public void Delete(Guid id)
         {
-            // :)
+
+            _productDA.Delete(id);
+            _context.SaveChanges();
         }
 
         public List<ProductDTO> UpdateThenList(ProductDTO dto)
@@ -57,13 +57,21 @@ namespace Food2Desk.Core
 
         public List<String> ListCategories()
         {
-            var productList = List();
+            var productList = ListWithoutLunch();
             return productList.DistinctBy(pr => pr.Category).Select(ct => ct.Category).ToList();
         }
 
         public List<ProductDTO> LunchList()
         {
-            return List().Where(prod => prod.Category == EnumCategory.Almoço).ToList();
+            return _productDA.List().Where(prod => prod.Category == EnumCategory.Almoço).ToList();
+        }
+
+        public void ChangeProductStatus(Guid id)
+        {           
+            var product = _productDA.GetById(id);
+            product.Status = product.Status == 1 ? 0 : 1;
+            _productDA.Update(product);
+            _context.SaveChanges();
         }
     }
 }

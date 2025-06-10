@@ -1,9 +1,7 @@
 using Food2Desk.Core;
-using Food2Desk.Core.Order;
 using Food2Desk.Shared.Interfaces;
 using Food2Desk.DataAccess;
 using Food2Desk.DataAccess.Product;
-using Food2Desk.DataAccess.Order;
 using Food2Desk.DataAccess.Lunch;
 using Food2Desk.Shared.Interfaces.Order;
 using Food2Desk.Shared.Interfaces.Lunch;

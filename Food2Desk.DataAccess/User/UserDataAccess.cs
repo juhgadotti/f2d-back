@@ -15,8 +15,9 @@ namespace Food2Desk.DataAccess
             OfficeModel office = new OfficeModel()
             {
                 Id = Guid.Parse("A24C13F0-E264-4396-BCEF-69AA8BD76465"),
-                Floor = "11",
-                Number = "102"
+                Block = "A",
+                Floor = "6",
+                Number = "610"
             };
             OfficeModel office2 = new OfficeModel()
             {
@@ -26,18 +27,19 @@ namespace Food2Desk.DataAccess
             };
             UserModel user = new UserModel()
             {
-                Name = "Joao",
+                Name = "João Silva",
                 Id = Guid.NewGuid(),
-                Offices = new List<OfficeModel>() { office, office2 }
+                Offices = new List<OfficeModel>() { office }
             };
 
             return user;
         }
 
-        //public UserAuthModel GetUserInfo(string email)
-        //{
-        //    return DBContext.Set<UserAuthDTO>().FirstOrDefault(e => e.Email == email);            
-        //}
+        public UserAuthModel GetUserInfo(string email)
+        {
+            var user = DBContext.Set<UserAuthDTO>().FirstOrDefault(e => e.Email == email);
+            return UserAuthModel.BuildModel(user);
+        }
 
         public List<UserAuthModel> List()
         {
@@ -56,6 +58,6 @@ namespace Food2Desk.DataAccess
         public List<UserDTO> ListBanco()
         {
              return DBContext.Set<UserDTO>().ToList();
-        }
+        }        
     }    
 }

@@ -14,6 +14,7 @@ namespace Food2Desk.Shared.DTOs
         public double Price {  get; set; }
         public int? WeekDay { get; set; }
         public string? Category { get; set; }
+        public int? Quantity { get; set; }
         public int Status { get; set; }
     }
 }

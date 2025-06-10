@@ -11,7 +11,9 @@ namespace Food2Desk.Shared.Model
     {
         public Guid Id { get; set; }
         public String Name { get; set; }
+        public String Email { get; set; }
         public String? Phone { get; set; }
+        public String Doc { get; set; }
         public List<OfficeModel> Offices {get; set;}
 
         public static UserModel BuildModel(UserDTO dto)
@@ -20,6 +22,9 @@ namespace Food2Desk.Shared.Model
             {
                 Id = dto.Id,
                 Name = dto.Name,
+                Phone = dto.Phone,
+                Email = dto.Email,
+                Doc = dto.Doc,
                 Offices = dto.Offices?.Select(x => OfficeModel.BuildModel(x)).ToList()
             };
         }
@@ -30,6 +35,8 @@ namespace Food2Desk.Shared.Model
                 Id = model.Id,
                 Name = model.Name,
                 Phone = model.Phone,
+                Email = model.Email,
+                Doc = model.Doc,
                 Offices = model.Offices?.Select(o => OfficeModel.BuildDTO(o)).ToList()
 
             };

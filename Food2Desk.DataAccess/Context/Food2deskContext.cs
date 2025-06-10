@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using ConfigurationManager = Food2Desk.Shared.Utils.ConfigurationManager;
 
-namespace Food2Desk.DataAccess.Context 
+namespace Food2Desk.DataAccess.Context
 {
     public class Food2deskContext(DbContextOptions<Food2deskContext> options) : DbContext(options)
     {
@@ -11,9 +11,11 @@ namespace Food2Desk.DataAccess.Context
         public virtual DbSet<ProductDTO> Product { get; set; }
         public virtual DbSet<OfficeDTO> Office { get; set; }
         public virtual DbSet<UserAuthDTO> UserAuth { get; set; }
+        public virtual DbSet<OrderDTO> Order { get; set; }
+        public virtual DbSet <ProductCartDTO> ProductCart { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {            
+        {
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder
@@ -45,6 +47,7 @@ namespace Food2Desk.DataAccess.Context
                 entity.Property(x => x.Price);
                 entity.Property(x => x.WeekDay);
                 entity.Property(x => x.Category);
+                entity.Property(x => x.Quantity);
                 entity.Property(x => x.Status);
             });
 
@@ -68,17 +71,60 @@ namespace Food2Desk.DataAccess.Context
                 entity.HasKey(x => x.Id);
                 entity.Property(x => x.Email);
                 entity.Property(x => x.Password);
-                entity.Property(x => x.IsLogged); 
-                entity.Property(x => x.UserId); 
+                entity.Property(x => x.IsLogged);
+                entity.Property(x => x.UserId);
             });
 
-            modelBuilder.Entity<OfficeDTO>(entity =>
+            modelBuilder.Entity<OrderDTO>(entity =>
             {
-                entity.HasKey(x => x.Id);
-                entity.Property(x => x.Floor);
-                entity.Property(x => x.Block);
-                entity.Property(x => x.Number);
+                entity.HasKey(e => e.Id);
+
+                entity.Property(e => e.Code);
+                entity.Property(e => e.UserId);
+                entity.Property(e => e.UserName);
+                entity.Property(e => e.TotalCharge).HasColumnType("decimal(10,2)");
+                entity.Property(e => e.ToDelivery);
+                entity.Property(e => e.IsLunch);
+                entity.Property(e => e.Status);
+                entity.Property(e => e.OfficeId);
+
+                // 🔗 Relacionamento com Office
+                entity.HasOne(e => e.Office)
+                      .WithMany()
+                      .HasForeignKey(e => e.OfficeId)
+                      .OnDelete(DeleteBehavior.Restrict);  // impede dele excluir o office se deletar o order
+
+                // 🔗 Relacionamento com Cart
+                entity.HasMany(e => e.Cart)
+                      .WithOne()
+                      .HasForeignKey(e => e.OrderId)
+                      .OnDelete(DeleteBehavior.Cascade);
             });
+
+            modelBuilder.Entity<ProductCartDTO>(entity =>
+            {
+                entity.HasKey(e => new { e.Id });
+
+                entity.Property(e => e.Quantity);
+                entity.Property(e => e.Price);
+                entity.Property(e => e.Name);
+                entity.Property(e => e.OrderId);
+
+                entity.HasOne<OrderDTO>()
+                      .WithMany(o => o.Cart)
+                      .HasForeignKey(e => e.OrderId)
+                      .OnDelete(DeleteBehavior.Cascade);
+            });
+
+            //modelBuilder.Entity<OfficeDTO>(entity =>
+            //{
+            //    entity.HasKey(x => x.Id);
+            //    entity.Property(x => x.Floor);
+            //    entity.Property(x => x.Block);
+            //    entity.Property(x => x.Number);
+
+            //    entity.HasFor
+            //});
         }
     }
 }

@@ -7,23 +7,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Food2Desk.DataAccess.Context;
+using Microsoft.EntityFrameworkCore;
 
-namespace Food2Desk.Core.Order
+namespace Food2Desk.Core
 {
-    public class Order : IOrderCore
+    public class Order(Food2deskContext context, IOrderDataAccess orderDA, IProductDataAccess productDA, IUserDataAccess userDA) : IOrderCore
     {
-        private readonly IOrderDataAccess OrderDA;
-        private readonly IProductDataAccess ProductDA;
-        public Order(IOrderDataAccess orderDA, IProductDataAccess productDA)
-        {
-            OrderDA = orderDA;
-            ProductDA = productDA;
-        }
+        private readonly IOrderDataAccess OrderDA = orderDA;
+        private readonly IProductDataAccess ProductDA = productDA;
+        private readonly IUserDataAccess UserDA = userDA;
+        private readonly Food2deskContext _context = context;
 
         public OrderDTO Get(Guid id)
         {
             return OrderDA.Get(id);
         }
+
+        public List<OrderDTO> ListUserOrder(Guid id)
+        {
+            var list = OrderDA.List().Where(p => p.UserId == id).ToList();
+            
+
+            return list;
+        }
+
 
         public List<OrderDTO> List()
         {
@@ -35,31 +43,43 @@ namespace Food2Desk.Core.Order
 
         public OrderDTO Update(OrderDTO dto)
         {
-            return OrderDA.Update(dto);
+            var newDto = OrderDA.Update(dto);
+            _context.SaveChanges();
+            return newDto;
         }
 
         public OrderDTO Insert(OrderDTO dto)
         {
-            return OrderDA.Insert(dto);
+            var name = UserDA.GetById(dto.UserId).Name;
+            dto.UserName = name;
+
+            dto.Cart.ForEach(c => c.OrderId = dto.Id);
+
+            dto.Code = OrderDA.List().Max(o => o.Code) + 1;
+
+            var model = OrderDA.Insert(dto);
+            _context.SaveChanges();
+            return model;
         }
 
-        public void UpdateStatus(Guid id, Int32 status)
+        public void UpdateStatus(OrderDTO dto)
         {
-            //orderDA
+            var model = OrderDA.Update(dto);
+            _context.SaveChanges();
         }
 
-        public OrderDTO BuildOrder(Guid id) //test
-        {
-            var order = OrderDA.List().FirstOrDefault(i => i.Id == id);
+        //public OrderDTO BuildOrder(Guid id) //test
+        //{
+        //    var order = OrderDA.ListMocked().FirstOrDefault(i => i.Id == id);
 
-            List<ProductDTO> products = ProductDA.List();
+        //    List<ProductDTO> products = ProductDA.List();
 
-            //List<ProductModel> productModel = ProductModel.BuildModel();
+        //    //List<ProductModel> productModel = ProductModel.BuildModel();
 
-            //order.Cart = products;
+        //    //order.Cart = products;
 
-            return order;
-        }
+        //    return order;
+        //}
 
 
     }
