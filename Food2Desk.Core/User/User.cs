@@ -31,9 +31,10 @@ namespace Food2Desk.Core
 
         public UserModel Insert(UserRegisterModel user)
         {
+            var userId = Guid.NewGuid();
             var newUser = new UserDTO()
             {
-                Id = Guid.NewGuid(),
+                Id = userId,
                 Name = user.Name,
                 Doc = user.Doc,
                 Email = user.Email,
@@ -42,11 +43,18 @@ namespace Food2Desk.Core
 
             UserDA.Insert(newUser);
 
+            InsertUserAuth(user, userId);
+
             _context.SaveChanges();
 
+            return UserModel.BuildModel(newUser);
+        }
+
+        private void InsertUserAuth(UserRegisterModel user, Guid id)
+        {
             var userAuth = new UserAuthDTO()
             {
-                UserId = newUser.Id,
+                UserId = id,
                 Email = user.Email,
                 Password = user.Password,
                 IsLogged = true
@@ -55,8 +63,6 @@ namespace Food2Desk.Core
             _userAuthDA.Insert(userAuth);
 
             _context.SaveChanges();
-
-            return UserModel.BuildModel(newUser);
         }
 
         public List<UserDTO> ListBanco()
@@ -92,6 +98,11 @@ namespace Food2Desk.Core
 
         public OfficeModel InsertNewOffice(OfficeModel office)
         {
+            if (office.UserId == null || office.UserId == Guid.Empty)
+            {
+                office.UserId = office.Id;
+                office.Id = Guid.NewGuid();            }
+                
             var officeDTO = OfficeModel.BuildDTO(office);
             var newOffice = _officeDA.Insert(officeDTO);
             _context.SaveChanges();
