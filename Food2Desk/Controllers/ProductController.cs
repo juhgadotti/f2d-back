@@ -79,6 +79,7 @@ namespace Food2Desk.Controllers
             //}
 
             model.Id = Guid.NewGuid();
+            model.Status = 1;
             ProductDTO dto = ProductModel.BuildDTO(model);
             var newDTO = ProductCore.Insert(dto);
             return new JsonResult(ProductModel.BuildModel(newDTO));
